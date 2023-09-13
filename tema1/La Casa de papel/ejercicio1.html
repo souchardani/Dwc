@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // En la "casa de papel", los atracadores tienen nombres de ciudades (Tokio, Berlín, Moscú, Nairobi...).
+      // La policía desconoce el nombre de atracador y el nombre de ciudad.
+      // Crear un programa que, dado el nombre de una capital, indique si es o no uno de los nombres elegidos por "el profesor" para alguno de los miembros de su equipo.
+      // Pero no te conformes con una sola manera: busca al menos 5 maneras diferentes de solucionarlo... ¡o más!
+
+      //*******SOLUCION 1 */
+      let nombres = ["tokio", "berlin", "moscú", "nairobi"];
+
+      let seguir = true;
+      while (seguir) {
+        //let capital = prompt("Indica el nombre de una capital");
+        let capital = prompt("Indica el nombre de una capital")
+          .toLowerCase()
+          .trim();
+
+        let buscarCapital = (capital) => {
+          if (nombres.includes(capital)) {
+            alert("Tu capital es una atracador");
+          } else {
+            alert("No hay peligro con tu captital");
+          }
+
+          let salir = confirm("quieres hacer otra consulta?");
+          if (!salir) {
+            console.log("sadremos");
+            seguir = false;
+            alert("hasta luego");
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
