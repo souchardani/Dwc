@@ -100,7 +100,7 @@
             `La posicion de la letra en el abecedario es: ${letraEnAbecedario}`
           );
           if (letraEnAbecedario == -1) {
-            mensajeCifrado += "";
+            mensajeCifrado += " ";
             console.log(
               `Se ha añadido al mensaje descifrado el espacio ${mensajeCifrado}`
             );
@@ -134,11 +134,12 @@
 
       function AnadirMensaje(mensaje) {
         mensajesCifrados.push(mensaje);
+        document.getElementById("mensajesCifrados").innerHTML = "";
         console.log(mensajesCifrados);
         mensajesCifrados.forEach(function (mensaje) {
           document.getElementById(
             "mensajesCifrados"
-          ).innerHTML = `<li>${mensaje}</li>`;
+          ).innerHTML += `<li>${mensaje}</li>`;
         });
       }
     </script>
