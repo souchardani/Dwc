@@ -30,12 +30,15 @@
           }
 
           let salir = confirm("quieres hacer otra consulta?");
+          console.log(salir);
           if (!salir) {
             console.log("sadremos");
             seguir = false;
             alert("hasta luego");
           }
+          salir;
         };
+        buscarCapital(capital);
       }
     </script>
   </body>
