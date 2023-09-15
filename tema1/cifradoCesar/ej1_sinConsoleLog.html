@@ -18,24 +18,9 @@
     crossorigin="anonymous"
   ></script>
   <body class="bg-light">
-    <style type="text/css">
-      body {
-      }
-
-      #cajaTexto {
-        width: 400px;
-      }
-
-      #MensajeFinal {
-        color: lightslategrey;
-        font-weight: 700;
-      }
-    </style>
     <script defer>
       let abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
       abecedario = abecedario.split("");
-      console.log(abecedario);
-      console.log(abecedario.length);
       let mensajesCifrados = [];
 
       //let mensaje = prompt("Introduce el mensaje a descifrar");
@@ -44,41 +29,25 @@
         let desplazamiento = 4;
         let mensajeDescifrado = "";
         let mensaje = document.getElementById("cajaTexto").value;
-        console.log("El mensaje es: " + mensaje);
 
         for (let i = 0; i < mensaje.length; i++) {
           let letraOriginal = mensaje.charAt(i);
-          console.log(`La letra a evaluar es ${letraOriginal}`);
           let letraEnAbecedario = abecedario.indexOf(letraOriginal);
-
-          console.log(
-            `La posicion de la letra en el abecedario es: ${letraEnAbecedario}`
-          );
           if (letraEnAbecedario == -1) {
             mensajeDescifrado += " ";
-            console.log(
-              `Se ha añadido al mensaje descifrado el espacio ${mensajeDescifrado}`
-            );
           } else if (letraEnAbecedario >= abecedario.length - desplazamiento) {
             abecedario = abecedario.concat(abecedario);
             mensajeDescifrado += abecedario[letraEnAbecedario + desplazamiento];
-            console.log(
-              `Se ha añadido al mensaje descifrado la letra ${mensajeDescifrado}`
-            );
           } else {
             mensajeDescifrado += abecedario[letraEnAbecedario + desplazamiento];
-            console.log(
-              `La letra a añadir es: ${
-                abecedario[letraEnAbecedario + desplazamiento]
-              }`
-            );
-            console.log(
-              `Se ha añadido al mensaje descifrado la letra ${mensajeDescifrado}`
-            );
           }
-          console.log("------");
         }
-
+        document
+          .getElementById("MensajeFinal")
+          .classList.remove("d-none", "alert-warning");
+        document
+          .getElementById("MensajeFinal")
+          .classList.add("d-block", "alert-success");
         document.getElementById(
           "MensajeFinal"
         ).innerHTML = `Se ha descifrado tu mensaje: ${mensajeDescifrado}`;
@@ -87,10 +56,10 @@
       function mostrarTexto(boton) {
         if (boton.id == "Cifrar") {
           let opcion = (document.getElementById("cajatexto").innerHTML =
-            "<input  class='form-control'id='cajaTexto' type='text' placeholder='Introduce el mensaje a cifrar EN MAYUSCULAS'/><br><br><button class='btn btn-primary' onclick='cifrar()'>Cifrar Mensaje</button>");
+            "<input  class='form-control w-50' id='cajaTexto' type='text' placeholder='Introduce el mensaje a cifrar EN MAYUSCULAS'/><br><br><button class='btn btn-dark' onclick='cifrar()'>Cifrar Mensaje</button>");
         } else {
           let opcion = (document.getElementById("cajatexto").innerHTML =
-            "<input class='form-control' id='cajaTexto' type='text' placeholder='Introduce el mensaje a Descifrar EN MAYUSCULAS'/><br><br><button class='btn btn-primary' onclick='descifrar()'>Descifrar Mensaje</button>");
+            "<input class='form-control w-50' id='cajaTexto' type='text' placeholder='Introduce el mensaje a Descifrar EN MAYUSCULAS'/><br><br><button class='btn btn-dark' onclick='descifrar()'>Descifrar Mensaje</button>");
         }
       }
 
@@ -101,39 +70,24 @@
 
         for (let i = 0; i < mensaje.length; i++) {
           let letraOriginal = mensaje.charAt(i);
-          console.log(`La letra a evaluar es ${letraOriginal}`);
+
           let letraEnAbecedario = abecedario.indexOf(letraOriginal);
 
-          console.log(
-            `La posicion de la letra en el abecedario es: ${letraEnAbecedario}`
-          );
           if (letraEnAbecedario == -1) {
             mensajeCifrado += " ";
-            console.log(
-              `Se ha añadido al mensaje descifrado el espacio ${mensajeCifrado}`
-            );
           } else if (letraEnAbecedario - desplazamiento < 0) {
             abecedario = abecedario.concat(abecedario);
-            console.log(abecedario);
+
             letraEnAbecedario = abecedario.lastIndexOf(letraOriginal);
             mensajeCifrado += abecedario[letraEnAbecedario - desplazamiento];
-            console.log(
-              `Se ha añadido al mensaje descifrado la letra ${mensajeCifrado}`
-            );
           } else {
             mensajeCifrado += abecedario[letraEnAbecedario - desplazamiento];
-            console.log(
-              `La letra a añadir es: ${
-                abecedario[letraEnAbecedario + desplazamiento]
-              }`
-            );
-            console.log(
-              `Se ha añadido al mensaje descifrado la letra ${mensajeCifrado}`
-            );
           }
-          console.log("------");
         }
-
+        document.getElementById("MensajeFinal").classList.remove("d-none");
+        document
+          .getElementById("MensajeFinal")
+          .classList.add("d-block", "alert-warning");
         document.getElementById(
           "MensajeFinal"
         ).innerHTML = `Se ha cifrado tu mensaje: ${mensajeCifrado}`;
@@ -143,7 +97,6 @@
       function AnadirMensaje(mensaje) {
         mensajesCifrados.push(mensaje);
         document.getElementById("mensajesCifrados").innerHTML = "";
-        console.log(mensajesCifrados);
         mensajesCifrados.forEach(function (mensaje) {
           document.getElementById(
             "mensajesCifrados"
@@ -151,20 +104,25 @@
         });
       }
     </script>
+    <h1 class="text-center m-4">♚Cifrado Cesar♚</h1>
+    <div class="container m-4">
+      <h2>Que Deseas Hacer?</h2>
+      <button class="btn btn-primary" id="Cifrar" onclick="mostrarTexto(this)">
+        Cifrar
+      </button>
+      <button
+        class="btn btn-primary"
+        id="Descifrar"
+        onclick="mostrarTexto(this)"
+      >
+        Descifrar
+      </button>
+      <br /><br />
+      <div id="cajatexto"></div>
+      <div class="alert d-none mt-4" id="MensajeFinal" role="alert"></div>
 
-    <h1>Que Deseas Hacer?</h1>
-    <button class="btn btn-primary" id="Cifrar" onclick="mostrarTexto(this)">
-      Cifrar
-    </button>
-    <button class="btn btn-primary" id="Descifrar" onclick="mostrarTexto(this)">
-      Descifrar
-    </button>
-    <br /><br />
-    <div id="cajatexto"></div>
-
-    <div id="MensajeFinal" class="green"></div>
-
-    <h2>Ultimos Mensajes Cifrados</h2>
-    <ul id="mensajesCifrados"></ul>
+      <h2 class="mt-4">Ultimos Mensajes Cifrados</h2>
+      <ul class="" id="mensajesCifrados"></ul>
+    </div>
   </body>
 </html>
