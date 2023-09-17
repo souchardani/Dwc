@@ -6,7 +6,7 @@ document.getElementById("AccionCalcularIMC").addEventListener("click", () => {
   let IMC = (peso / Math.pow(centimetros, 2)).toFixed(2);
   document.getElementById(
     "resultadoIMC"
-  ).innerHTML = `Segun tus datos, tu indice de masa corporal es:<p class="fw-bold mt-2" id="resultadoIMC">${IMC}</p>`;
+  ).innerHTML = `Segun tus datos, tu indice de masa corporal es: <span class="fw-bold mt-2" id="resultadoIMC">${IMC}</span>`;
 });
 
 //show and hide modals
