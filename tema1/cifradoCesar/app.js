@@ -96,3 +96,11 @@ function mostrarTexto(boton) {
       "<input class='form-control w-50' id='cajaTexto' type='text' placeholder='Introduce el mensaje a Descifrar EN MAYUSCULAS'/><br><br><button class='btn btn-dark' onclick='descifrar()'>Descifrar Mensaje</button>");
   }
 }
+
+//*******PARA NO ELIMINAR EL ALERT DE BOOTSTRAP */
+var alertMsg = document.getElementById("comprobar-mayuscula");
+var closeButton = alertMsg.querySelector(".btn-close");
+
+closeButton.addEventListener("click", function () {
+  alertMsg.classList.add("d-none");
+});
