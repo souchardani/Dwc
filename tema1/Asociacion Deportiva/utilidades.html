@@ -71,7 +71,14 @@
               <p class="card-text">
                 App para calcular la Frecuencia Cardiaca Máxima
               </p>
-              <a href="#" class="btn btn-primary">Entrar</a>
+              <a
+                href="#"
+                data-bs-target="#modal1FCM"
+                data-bs-toggle="modal"
+                class="btn btn-primary"
+                id="boton_fcm"
+                >Entrar</a
+              >
             </div>
           </div>
         </div>
@@ -184,6 +191,89 @@
         </div>
       </div>
     </div>
+    <!-- calculadora de fcm -->
+    <div class="modal fade" id="modal1FCM" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+              Calculadora de FCM
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="fw-bold"
+              >Introduce tus datos para calcular tu frecuencia Cardiaca
+              Maxima</span
+            >
+            <div class="m-3">
+              <label for="centimetros" class="form-label"
+                >Introuce tus Edad</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="centimetros"
+                placeholder="185"
+              />
+            </div>
+            <div class="m-3">
+              <label for="peso" class="form-label">Introuce tu Sexo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="peso"
+                placeholder="85"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-primary"
+              data-bs-target="#Modal2FCM"
+              data-bs-toggle="modal"
+              id="AccionCalcularFCM"
+            >
+              Calcula tu FCM
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="Modal2FCM" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+              Tus Resultados
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="resultadoIMC"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-primary"
+              data-bs-target="#modal1FCM"
+              data-bs-toggle="modal"
+            >
+              Vuelve A introducir Datos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="fcm.js"></script>
     <script src="imc.js"></script>
   </body>
 </html>
