@@ -212,24 +212,36 @@
               Maxima</span
             >
             <div class="m-3">
-              <label for="centimetros" class="form-label"
-                >Introuce tus Edad</label
-              >
+              <label for="edad" class="form-label">Introuce tus Edad</label>
               <input
                 type="text"
                 class="form-control"
-                id="centimetros"
-                placeholder="185"
+                id="edad"
+                placeholder="24"
               />
             </div>
             <div class="m-3">
-              <label for="peso" class="form-label">Introuce tu Sexo</label>
-              <input
-                type="text"
-                class="form-control"
-                id="peso"
-                placeholder="85"
-              />
+              <label for="sexo" class="form-label">Introuce tu Sexo:</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sexo"
+                  id="hombre"
+                  value="hombre"
+                />
+                <label class="form-check-label" for="hombre">Hombre</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sexo"
+                  id="mujer"
+                  value="mujer"
+                />
+                <label class="form-check-label" for="hombre">Mujer</label>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
@@ -259,7 +271,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div id="resultadoIMC"></div>
+            <div id="resultadoFCM"></div>
           </div>
           <div class="modal-footer">
             <button

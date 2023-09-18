@@ -29,10 +29,3 @@ document.getElementById("AccionCalcularIMC").addEventListener("click", () => {
   ).innerHTML = `Segun tus datos, tu indice de masa corporal es: <span class="fw-bold mt-2" id="resultadoIMC">${IMC}</span>
   <br><br>Segun la OMS, tu situacion actual es: <p class="lead">${categoria}<p>`;
 });
-
-//show and hide modals
-//show imc
-let botonImc = document.getElementById("boton_imc");
-botonImc.addEventListener("click", () => {
-  document.querySelector("#modal1IMC").classList.toggle = "d-none";
-});
