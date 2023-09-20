@@ -2,6 +2,9 @@
 document.getElementById("AccionCalcularIMC").addEventListener("click", () => {
   let centimetros = document.getElementById("centimetros").value;
   let peso = document.getElementById("peso").value;
+  let ValoresCorrectos = controlarValores(centimetros, peso);
+  console.log(ValoresCorrectos);
+
   centimetros = centimetros / 100;
   let IMC = (peso / Math.pow(centimetros, 2)).toFixed(2);
   let categoria = "";
@@ -22,10 +25,19 @@ document.getElementById("AccionCalcularIMC").addEventListener("click", () => {
     : IMC > 40.0
     ? (categoria = "Obeso (Tipo III)")
     : (categoria = "");
-
   //MOSTRAR DATOS
   document.getElementById(
     "resultadoIMC"
   ).innerHTML = `Segun tus datos, tu indice de masa corporal es: <span class="fw-bold mt-2" id="resultadoIMC">${IMC}</span>
-  <br><br>Segun la OMS, tu situacion actual es: <p class="lead">${categoria}<p>`;
+      <br><br>Segun la OMS, tu situacion actual es: <p class="lead">${categoria}<p>`;
 });
+
+function controlarValores(centimetros, peso) {
+  if (typeof centrimetros != "number" || typeof peso != "number") {
+    document.getElementById("errorIMC").innerHTML = `
+    Ambos valores deben ser numericos
+    `;
+    return false;
+  }
+  return true;
+}
