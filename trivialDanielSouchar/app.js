@@ -23,6 +23,7 @@ let categorias = [
         respuesta: "oceania",
       },
     ],
+    color: "bg-info",
   },
   {
     categoria: "Arte",
@@ -41,6 +42,7 @@ let categorias = [
         respuesta: "la noche estrellada",
       },
     ],
+    color: "bg-warning",
   },
   {
     categoria: "Espectáculos",
@@ -59,6 +61,7 @@ let categorias = [
         respuesta: "peter jackson",
       },
     ],
+    color: "bg-danger",
   },
   {
     categoria: "Historia",
@@ -77,6 +80,7 @@ let categorias = [
         respuesta: "1776",
       },
     ],
+    color: "bg-primary",
   },
   {
     categoria: "Ciencias",
@@ -95,6 +99,7 @@ let categorias = [
         respuesta: "fotosintesis.",
       },
     ],
+    color: "bg-info",
   },
   {
     categoria: "Deportes",
@@ -114,6 +119,7 @@ let categorias = [
         respuesta: "cinco",
       },
     ],
+    color: "bg-primary",
   },
 ];
 
@@ -138,6 +144,7 @@ function MostrarDatos() {
   let txtPregunta = document.getElementById("txtPregunta");
   txtCategoria.innerHTML = `${categoriaActual}`;
   txtPregunta.innerHTML = `${preguntaActual}`;
+  anadirColores();
 }
 
 let verificarCorrecta = function ComprobarRespuesta() {
@@ -148,8 +155,13 @@ let verificarCorrecta = function ComprobarRespuesta() {
     console.log("Usuario: " + respuestaUsuario);
     esCorrectaOno = respuestaUsuario.includes(respuestaActual) ? true : false;
     modificarContadores();
+    esCorrectaOno
+      ? (document.getElementById("CorrectaIncorrecta").innerHTML =
+          "<span class='text-bg-success p-3 rounded-pill'>Correcta<span>")
+      : (document.getElementById("CorrectaIncorrecta").innerHTML =
+          "<span class='text-bg-danger p-3 rounded-pill'>Incorrecta<span>");
   } else {
-    modalError();
+    alert("debes completar los campo");
   }
   comprobarVictoriaODerrota();
 };
@@ -179,15 +191,22 @@ function comprobartxtNoVacio() {
 
 function siguientePregunta() {
   obtenerCajaTexto = document.getElementById("inputRespuesta").value = "";
+  if (contador <= 6) eliminarColor();
   contador++;
   ContadorDePreguntas();
 }
 
 function comprobarVictoriaODerrota() {
   if (contadorVictorias >= 4) {
-    alert("has ganado");
+    localStorage.setItem("NumeroRespuestas", contadorVictorias);
+    localStorage.setItem("tipoRespuesta", "Correctas");
+    localStorage.setItem("resultado", "Ganado");
+    window.location.href = "final.html";
   } else if (contadorDerrotas >= 3) {
-    alert("has perdido");
+    localStorage.setItem("NumeroRespuestas", contadorDerrotas);
+    localStorage.setItem("tipoRespuesta", "Incorrectas");
+    localStorage.setItem("resultado", "Perdido");
+    window.location.href = "final.html";
   }
 }
 
@@ -196,10 +215,20 @@ function mostrarJuego() {
   document.getElementById("PantallaJuego").style.display = "block";
 }
 
-function modalError() {
-  let alertModal = document.getElementById("alert-modal");
-  alertModal.classList.remove = "d-none";
-  alertModal.innerHTML = "<strong>Error</strong> Debes escribir una respuesta";
+function anadirColores() {
+  categoriaActual = categorias[contador].color;
+  console.log(categoriaActual);
+  document.getElementById("colorHeader").classList.add(categoriaActual);
+  document.getElementById("txtCategoria").classList.add(categoriaActual);
+  document.getElementById("enviarRespuesta").classList.add(categoriaActual);
+}
+
+function eliminarColor() {
+  categoriaActual = categorias[contador].color;
+  console.log("eliminar color");
+  document.getElementById("colorHeader").classList.remove(categoriaActual);
+  document.getElementById("txtCategoria").classList.remove(categoriaActual);
+  document.getElementById("enviarRespuesta").classList.remove(categoriaActual);
 }
 
 //event listeners
@@ -215,10 +244,16 @@ btnSiguientePregunta = document
   .getElementById("siguientePregunta")
   .addEventListener("click", siguientePregunta);
 
-//modal prevent default
-// var myModal = document.getElementById("modalResultado");
-// myModal.addEventListener("show.bs.modal", function (event) {
-//   if (!data) {
-//     return event.preventDefault(); // stops modal from being shown
-//   }
-// });
+inputRespuesta = document.getElementById("inputRespuesta");
+inputRespuesta.addEventListener("blur", function () {});
+
+// <!-- toast trigger -->
+const toastTrigger = document.getElementById("liveToastBtn");
+const toastLiveExample = document.getElementById("toastResultados");
+
+if (toastTrigger) {
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+  toastTrigger.addEventListener("click", () => {
+    toastBootstrap.show();
+  });
+}

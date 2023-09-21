@@ -52,15 +52,12 @@
       </div>
     </div>
     <!-- ************** FINAL HERO SECTION****************** -->
-    <!--************** PANTALLA DEL JUEGO******************   -->
+
     <div class="vh-100 text-bg-light" id="PantallaJuego" style="display: none">
       <h2 class="text-center my-5">Preguntas</h2>
       <!-- TARJETA DE PREGUNTAS -->
-      <div class="card text-center w-75 m-auto bg-primary bg-opacity-10">
-        <div
-          class="card-header mb-5 lead fw-bold bg-primary text-light"
-          id="txtCategoria"
-        >
+      <div class="card text-center w-50 m-auto bg-opacity-10" id="colorHeader">
+        <div class="card-header mb-5 lead fw-bold text-light" id="txtCategoria">
           Categoria
         </div>
         <div class="card-body">
@@ -77,19 +74,24 @@
           <button
             type="button"
             id="enviarRespuesta"
-            class="mt-5 btn btn-primary btn-lg"
+            class="mt-5 btn text-light btn-lg"
             data-bs-toggle="modal"
             data-bs-target="#modalPregunta"
           >
             Enviar Respuesta
           </button>
         </div>
-
-        <button id="siguientePregunta">Siguiente Pregunta</button>
       </div>
-      <h2>Respuestas Correctas: <span id="txtVictorias">0</span></h2>
-      <h2>Respuestas Erroneas:<span id="txtDerrotas">0</span></h2>
+      <div class="text-center">
+        <h5 class="text-bg-success m-auto mt-5 rounded-3 p-2 w-75 mb-3">
+          Resultado Actual: <span id="txtVictorias">0</span>
+        </h5>
+        <h5 class="text-bg-danger m-auto rounded-3 p-2 w-75">
+          Respuestas Erroneas:<span id="txtDerrotas">0</span>
+        </h5>
+      </div>
     </div>
+
     <!--************** FINAL PANTALLA DEL JUEGO*****************   -->
     <!-- MODALS PANTALLA DE JUEGO -->
     <!-- MODAL  -->
@@ -100,7 +102,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="titulo-modal">ejemplo titulo</h1>
+            <h1 class="modal-title fs-5" id="titulo-modal">Resultado</h1>
             <button
               type="button"
               class="btn-close"
@@ -108,36 +110,25 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
-            <div
-              class="alert alert-warning alert-dismissible fade show d-none"
-              role="alert"
-              id="alert-modal"
-            >
-              <strong>Error</strong>Debes Escribir una respuesta
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+          <div class="modal-body mt-3">
+            <p class="lead">
+              Tu respuesta es <span id="CorrectaIncorrecta"></span>
+            </p>
           </div>
           <div class="modal-footer">
             <button
+              id="siguientePregunta"
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-primary"
               data-bs-dismiss="modal"
             >
-              Close
+              Siguiente Pregunta
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
+
     <!-- bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

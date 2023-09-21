@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Al tener <span id="numero">numero</span> respuestas
+    <span id="tipo"> tipo</span>
+    has:
+    <h1 id="resultado">resultado</h1>
+    <span id="gif"></span>
+    <script>
+      var contadorVictorias = localStorage.getItem("NumeroRespuestas");
+      var tipoRespuesta = localStorage.getItem("tipoRespuesta");
+      console.log(tipoRespuesta);
+      var resultado = localStorage.getItem("resultado");
+
+      if (!(tipoRespuesta == "Incorrectas")) {
+        document.getElementById("gif").innerHTML =
+          '<iframe src="https://giphy.com/embed/xSM46ernAUN3y" width="459" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>';
+      } else {
+        document.getElementById("gif").innerHTML =
+          '<iframe src="https://giphy.com/embed/yoJC2Olx0ekMy2nX7W" width="480" height="264" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>';
+      }
+
+      document.getElementById("numero").innerHTML = contadorVictorias;
+      document.getElementById("tipo").innerHTML = tipoRespuesta;
+      document.getElementById("resultado").innerHTML = resultado;
+      document.getElementById("tipo").innerHTML = tipoRespuesta;
+    </script>
+
+    <a href="index.html">Volver a jugar</a>
+  </body>
+</html>
