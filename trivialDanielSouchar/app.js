@@ -12,15 +12,15 @@ let categorias = [
     preguntas: [
       {
         pregunta: "¿Cuál es la capital de Francia?",
-        respuesta: "París",
+        respuesta: "paris",
       },
       {
         pregunta: "¿Cuál es el río más largo del mundo?",
-        respuesta: "Amazonas",
+        respuesta: "amazonas",
       },
       {
         pregunta: "¿En qué continente se encuentra Australia?",
-        respuesta: "Oceanía",
+        respuesta: "oceania",
       },
     ],
   },
@@ -29,16 +29,16 @@ let categorias = [
     preguntas: [
       {
         pregunta: "¿Quién pintó la Mona Lisa?",
-        respuesta: "Leonardo da Vinci",
+        respuesta: "leonardo da vinci",
       },
       {
         pregunta:
           "¿Qué movimiento artístico se caracteriza por cubrir objetos con papel y pegamento?",
-        respuesta: "Arte Povera",
+        respuesta: "arte povera",
       },
       {
         pregunta: "¿Cuál es la obra más famosa de Vincent van Gogh?",
-        respuesta: "La noche estrellada",
+        respuesta: "la noche estrellada",
       },
     ],
   },
@@ -47,7 +47,7 @@ let categorias = [
     preguntas: [
       {
         pregunta: "¿Quién interpretó a James Bond en la película 'Skyfall'?",
-        respuesta: "Daniel Craig",
+        respuesta: "daniel craig",
       },
       {
         pregunta: "¿En qué año se estrenó la primera película de 'Star Wars'?",
@@ -56,7 +56,7 @@ let categorias = [
       {
         pregunta:
           "¿Qué director dirigió la trilogía 'El Señor de los Anillos'?",
-        respuesta: "Peter Jackson",
+        respuesta: "peter jackson",
       },
     ],
   },
@@ -69,12 +69,12 @@ let categorias = [
       },
       {
         pregunta: "¿Quién fue el primer presidente de los Estados Unidos?",
-        respuesta: "George Washington",
+        respuesta: "george washington",
       },
       {
         pregunta:
           "¿En qué año se firmó la Declaración de Independencia de Estados Unidos?",
-        respuesta: "1776.",
+        respuesta: "1776",
       },
     ],
   },
@@ -83,16 +83,16 @@ let categorias = [
     preguntas: [
       {
         pregunta: "¿Cuál es el símbolo químico del oxígeno?",
-        respuesta: "O",
+        respuesta: "o",
       },
       {
         pregunta: "¿Cuál es el planeta más grande del sistema solar?",
-        respuesta: "Júpiter.",
+        respuesta: "jupiter.",
       },
       {
         pregunta:
           "¿Cuál es el proceso por el cual las plantas producen su propio alimento?",
-        respuesta: "fotosíntesis.",
+        respuesta: "fotosintesis.",
       },
     ],
   },
@@ -101,12 +101,12 @@ let categorias = [
     preguntas: [
       {
         pregunta: "¿Cuál es el deporte más popular en Brasil?",
-        respuesta: "Fútbol",
+        respuesta: "futbol",
       },
       {
         pregunta:
           "¿En qué deporte se utiliza una pelota amarilla y una raqueta?",
-        respuesta: "tenis.",
+        respuesta: "tenis",
       },
       {
         pregunta:
@@ -118,6 +118,7 @@ let categorias = [
 ];
 
 function ContadorDePreguntas() {
+  mostrarJuego();
   if (contador < categorias.length) {
     let numeroRandom = Math.floor(Math.random() * 3);
     categoriaActual = categorias[contador].categoria;
@@ -143,10 +144,12 @@ let verificarCorrecta = function ComprobarRespuesta() {
   let respuestaEscrita = comprobartxtNoVacio();
   if (respuestaEscrita) {
     let respuestaUsuario = document.getElementById("inputRespuesta").value;
+    respuestaUsuario = respuestaUsuario.toLowerCase().trim();
+    console.log("Usuario: " + respuestaUsuario);
     esCorrectaOno = respuestaUsuario.includes(respuestaActual) ? true : false;
     modificarContadores();
   } else {
-    alert("Debes escribir Una Respuesta Antes de enviar");
+    modalError();
   }
   comprobarVictoriaODerrota();
 };
@@ -175,6 +178,7 @@ function comprobartxtNoVacio() {
 }
 
 function siguientePregunta() {
+  obtenerCajaTexto = document.getElementById("inputRespuesta").value = "";
   contador++;
   ContadorDePreguntas();
 }
@@ -185,6 +189,17 @@ function comprobarVictoriaODerrota() {
   } else if (contadorDerrotas >= 3) {
     alert("has perdido");
   }
+}
+
+function mostrarJuego() {
+  document.getElementById("HeroSection").style.display = "none";
+  document.getElementById("PantallaJuego").style.display = "block";
+}
+
+function modalError() {
+  let alertModal = document.getElementById("alert-modal");
+  alertModal.classList.remove = "d-none";
+  alertModal.innerHTML = "<strong>Error</strong> Debes escribir una respuesta";
 }
 
 //event listeners
@@ -199,3 +214,11 @@ btnEnviarRespuesta = document
 btnSiguientePregunta = document
   .getElementById("siguientePregunta")
   .addEventListener("click", siguientePregunta);
+
+//modal prevent default
+// var myModal = document.getElementById("modalResultado");
+// myModal.addEventListener("show.bs.modal", function (event) {
+//   if (!data) {
+//     return event.preventDefault(); // stops modal from being shown
+//   }
+// });
