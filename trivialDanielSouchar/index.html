@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jUEGO dE TRIVIAL</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Ya has completado 6 quesitos, entra para obtener la victoria final</h1>
+    <button id="entrarJuego">Entrar</button>
+
+    <div class="tarjeta">
+      <p id="txtCategoria">Categoria</p>
+      <p id="txtPregunta">aqui iria la pregunta</p>
+      <input
+        type="text"
+        name="respuesta"
+        id="inputRespuesta"
+        placeholder="Escribe tu respuesta"
+      />
+      <button id="enviarRespuesta">Enviar Respuesta</button>
+      <button id="siguientePregunta">Siguiente Pregunta</button>
+    </div>
+    <h2>Respuestas Correctas: <span id="txtVictorias">0</span></h2>
+    <h2>Respuestas Erroneas:<span id="txtDerrotas">0</span></h2>
+    <script src="app.js" defer></script>
+  </body>
+</html>
