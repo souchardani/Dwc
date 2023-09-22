@@ -134,7 +134,7 @@ function ContadorDePreguntas() {
     console.log(`El numero de la pregunta es: ${numeroRandom}`);
     MostrarDatos();
   } else {
-    alert("Has llegado al final del juego");
+    //alert("Has llegado al final del juego");
     comprobarVictoriaODerrota();
   }
 }
@@ -206,6 +206,8 @@ function comprobarVictoriaODerrota() {
     localStorage.setItem("NumeroRespuestas", contadorDerrotas);
     localStorage.setItem("tipoRespuesta", "Incorrectas");
     localStorage.setItem("resultado", "Perdido");
+    window.location.href = "final.html";
+  } else if (contador == categorias.length) {
     window.location.href = "final.html";
   }
 }
