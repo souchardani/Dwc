@@ -1,3 +1,4 @@
+//recargamos la pagina cuando volemos a inciar el juego
 function init() {
   window.location.reload(true);
 }
@@ -10,6 +11,7 @@ let esCorrectaOno = null;
 let contadorVictorias = 0;
 let contadorDerrotas = 0;
 
+//array de categorias
 let categorias = [
   {
     categoria: "Geografía",
@@ -127,6 +129,7 @@ let categorias = [
   },
 ];
 
+//generamos los valores de la pregunta actual, en base al contador, y lo extraemos del array
 function ContadorDePreguntas() {
   mostrarJuego();
   if (contador < categorias.length) {
@@ -143,6 +146,7 @@ function ContadorDePreguntas() {
   }
 }
 
+//llenamos los campos de categoria y pregunta en base a la pregunta actual
 function MostrarDatos() {
   let txtCategoria = document.getElementById("txtCategoria");
   let txtPregunta = document.getElementById("txtPregunta");
@@ -151,24 +155,35 @@ function MostrarDatos() {
   anadirColores();
 }
 
+//verificamos si la respuesta es correcta o incorrecta
 let verificarCorrecta = function ComprobarRespuesta() {
   let respuestaEscrita = comprobartxtNoVacio();
+  //si se ha introducido texto
   if (respuestaEscrita) {
     let respuestaUsuario = document.getElementById("inputRespuesta").value;
     respuestaUsuario = respuestaUsuario.toLowerCase().trim();
     esCorrectaOno = respuestaUsuario.includes(respuestaActual) ? true : false;
     modificarContadores();
-    esCorrectaOno
-      ? (document.getElementById("CorrectaIncorrecta").innerHTML =
-          "<span class='text-bg-success p-3 rounded-pill'>Correcta<span>")
-      : (document.getElementById("CorrectaIncorrecta").innerHTML =
-          "<span class='text-bg-danger p-3 rounded-pill'>Incorrecta<span>");
+    laCorrectaEra;
+    if (esCorrectaOno) {
+      document.querySelector("#laCorrectaEra").textContent = "";
+      document.getElementById("CorrectaIncorrecta").innerHTML =
+        "<span class='text-bg-success p-3 rounded-pill'>Correcta<span>";
+    } else {
+      document.getElementById("CorrectaIncorrecta").innerHTML =
+        "<span class='text-bg-danger p-3 rounded-pill'>Incorrecta<span>";
+      document.querySelector(
+        "#laCorrectaEra"
+      ).textContent = `La respuesta correcta era ${respuestaActual}`;
+    }
+    //no se ha escrito respuesta
   } else {
-    alert("debes completar los campo");
+    alert("Debes escribir una respuesta para poder avanzar");
   }
   comprobarVictoriaODerrota();
 };
 
+//actualizamos los contadores
 function modificarContadores() {
   if (esCorrectaOno) {
     contadorVictorias++;
@@ -179,6 +194,8 @@ function modificarContadores() {
   }
 }
 
+//al perder el foco del cuadro de texto, verificamos si se ha introducido respuesta
+//y actualizamos el controlador del modal al boton
 function comprobartxtNoVacio() {
   let comprobarTexto = document.getElementById("inputRespuesta").value;
   if (
@@ -196,13 +213,20 @@ function comprobartxtNoVacio() {
   }
 }
 
+//al pulsar siguiente pregunta, actualizamos la pregunta actual suamndo al contador
 function siguientePregunta() {
+  //reseteamos el boton del modal para verificar si se ha introducido texto
+  document.getElementById("enviarRespuesta").removeAttribute("data-bs-toggle");
+  //reseteamos el valor de la caja de texto
   obtenerCajaTexto = document.getElementById("inputRespuesta").value = "";
+  //controlamos los colores de las tarjetas
   if (contador <= 6) eliminarColor();
   contador++;
+  //llamamos al contador
   ContadorDePreguntas();
 }
 
+//verificamos el numero de victoria derrotas del usuarios, par verificar si ha cumplido alguna de las 3 condiciones
 function comprobarVictoriaODerrota() {
   if (contadorVictorias == 4) {
     localStorage.setItem("NumeroRespuestas", contadorVictorias);
