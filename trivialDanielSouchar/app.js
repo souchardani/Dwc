@@ -1,3 +1,7 @@
+function init() {
+  window.location.reload(true);
+}
+
 let preguntaActual = null;
 let respuestaActual = null;
 let categoriaActual = null;
@@ -16,7 +20,7 @@ let categorias = [
       },
       {
         pregunta: "¿Cuál es el río más largo del mundo?",
-        respuesta: "amazonas",
+        respuesta: "nilo",
       },
       {
         pregunta: "¿En qué continente se encuentra Australia?",
@@ -91,12 +95,12 @@ let categorias = [
       },
       {
         pregunta: "¿Cuál es el planeta más grande del sistema solar?",
-        respuesta: "jupiter.",
+        respuesta: "jupiter",
       },
       {
         pregunta:
           "¿Cuál es el proceso por el cual las plantas producen su propio alimento?",
-        respuesta: "fotosintesis.",
+        respuesta: "fotosintesis",
       },
     ],
     color: "bg-info",
@@ -126,12 +130,12 @@ let categorias = [
 function ContadorDePreguntas() {
   mostrarJuego();
   if (contador < categorias.length) {
+    console.log("El contador es:" + contador);
     let numeroRandom = Math.floor(Math.random() * 3);
     categoriaActual = categorias[contador].categoria;
     preguntaActual = categorias[contador].preguntas[numeroRandom].pregunta;
     respuestaActual = categorias[contador].preguntas[numeroRandom].respuesta;
     console.log(respuestaActual);
-    console.log(`El numero de la pregunta es: ${numeroRandom}`);
     MostrarDatos();
   } else {
     //alert("Has llegado al final del juego");
@@ -152,7 +156,7 @@ let verificarCorrecta = function ComprobarRespuesta() {
   if (respuestaEscrita) {
     let respuestaUsuario = document.getElementById("inputRespuesta").value;
     respuestaUsuario = respuestaUsuario.toLowerCase().trim();
-    console.log("Usuario: " + respuestaUsuario);
+    console.log("Respuesta Usuario: " + respuestaUsuario);
     esCorrectaOno = respuestaUsuario.includes(respuestaActual) ? true : false;
     modificarContadores();
     esCorrectaOno
@@ -185,6 +189,11 @@ function comprobartxtNoVacio() {
   ) {
     return false;
   } else {
+    console.log("Entrando Aqui");
+    document
+      .getElementById("enviarRespuesta")
+      .setAttribute("data-bs-toggle", "modal");
+
     return true;
   }
 }
@@ -197,12 +206,16 @@ function siguientePregunta() {
 }
 
 function comprobarVictoriaODerrota() {
-  if (contadorVictorias >= 4) {
+  console.log(`Funcion:comprobarVictoriaDerrota`);
+  console.log(`contadorVictoria: ${contadorVictorias}`);
+  console.log(`contadorDerrotas: ${contadorDerrotas}`);
+
+  if (contadorVictorias == 4) {
     localStorage.setItem("NumeroRespuestas", contadorVictorias);
     localStorage.setItem("tipoRespuesta", "Correctas");
     localStorage.setItem("resultado", "Ganado");
     window.location.href = "final.html";
-  } else if (contadorDerrotas >= 3) {
+  } else if (contadorDerrotas == 3) {
     localStorage.setItem("NumeroRespuestas", contadorDerrotas);
     localStorage.setItem("tipoRespuesta", "Incorrectas");
     localStorage.setItem("resultado", "Perdido");
@@ -227,7 +240,6 @@ function anadirColores() {
 
 function eliminarColor() {
   categoriaActual = categorias[contador].color;
-  console.log("eliminar color");
   document.getElementById("colorHeader").classList.remove(categoriaActual);
   document.getElementById("txtCategoria").classList.remove(categoriaActual);
   document.getElementById("enviarRespuesta").classList.remove(categoriaActual);
@@ -247,15 +259,7 @@ btnSiguientePregunta = document
   .addEventListener("click", siguientePregunta);
 
 inputRespuesta = document.getElementById("inputRespuesta");
-inputRespuesta.addEventListener("blur", function () {});
-
-// <!-- toast trigger -->
-const toastTrigger = document.getElementById("liveToastBtn");
-const toastLiveExample = document.getElementById("toastResultados");
-
-if (toastTrigger) {
-  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-  toastTrigger.addEventListener("click", () => {
-    toastBootstrap.show();
-  });
-}
+inputRespuesta.addEventListener("blur", function () {
+  console.log("comprobamos que el texto no esta vacio");
+  comprobartxtNoVacio();
+});
