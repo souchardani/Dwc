@@ -130,12 +130,12 @@ let categorias = [
 function ContadorDePreguntas() {
   mostrarJuego();
   if (contador < categorias.length) {
-    console.log("El contador es:" + contador);
+    console.log("Estamos el la respuesta:" + contador);
     let numeroRandom = Math.floor(Math.random() * 3);
     categoriaActual = categorias[contador].categoria;
     preguntaActual = categorias[contador].preguntas[numeroRandom].pregunta;
     respuestaActual = categorias[contador].preguntas[numeroRandom].respuesta;
-    console.log(respuestaActual);
+    console.log("La respuesta actual:" + respuestaActual);
     MostrarDatos();
   } else {
     //alert("Has llegado al final del juego");
@@ -156,7 +156,6 @@ let verificarCorrecta = function ComprobarRespuesta() {
   if (respuestaEscrita) {
     let respuestaUsuario = document.getElementById("inputRespuesta").value;
     respuestaUsuario = respuestaUsuario.toLowerCase().trim();
-    console.log("Respuesta Usuario: " + respuestaUsuario);
     esCorrectaOno = respuestaUsuario.includes(respuestaActual) ? true : false;
     modificarContadores();
     esCorrectaOno
@@ -189,7 +188,6 @@ function comprobartxtNoVacio() {
   ) {
     return false;
   } else {
-    console.log("Entrando Aqui");
     document
       .getElementById("enviarRespuesta")
       .setAttribute("data-bs-toggle", "modal");
@@ -206,10 +204,6 @@ function siguientePregunta() {
 }
 
 function comprobarVictoriaODerrota() {
-  console.log(`Funcion:comprobarVictoriaDerrota`);
-  console.log(`contadorVictoria: ${contadorVictorias}`);
-  console.log(`contadorDerrotas: ${contadorDerrotas}`);
-
   if (contadorVictorias == 4) {
     localStorage.setItem("NumeroRespuestas", contadorVictorias);
     localStorage.setItem("tipoRespuesta", "Correctas");
@@ -232,7 +226,6 @@ function mostrarJuego() {
 
 function anadirColores() {
   categoriaActual = categorias[contador].color;
-  console.log(categoriaActual);
   document.getElementById("colorHeader").classList.add(categoriaActual);
   document.getElementById("txtCategoria").classList.add(categoriaActual);
   document.getElementById("enviarRespuesta").classList.add(categoriaActual);
@@ -260,6 +253,5 @@ btnSiguientePregunta = document
 
 inputRespuesta = document.getElementById("inputRespuesta");
 inputRespuesta.addEventListener("blur", function () {
-  console.log("comprobamos que el texto no esta vacio");
   comprobartxtNoVacio();
 });
