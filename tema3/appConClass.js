@@ -1,0 +1,1 @@
+//clase mediante palabra class
