@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Ejemplo</h1>
+    <script>
+      function Ejemplo1(nombre) {
+        this.nombre = nombre;
+
+        this.getNombre = function () {
+          return this.nombre;
+        };
+      }
+
+      //   function Ejemplo1(nombre) {
+      //     this.nombre = nombre;
+
+      //     Ejemplo1.prototype.getNombre = function () {
+      //       return this.nombre;
+      //     };
+      //   }
+
+      let user1 = new Ejemplo1("Daniel");
+      let user2 = new Ejemplo1("Diego");
+      console.log(user1);
+      console.log(user2);
+    </script>
+  </body>
+</html>
