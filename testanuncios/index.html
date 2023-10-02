@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="anuncios.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="anuncio">
+      <div class="contenido">
+        <h2>Ejemplo de anuncio</h2>
+        <p>Fecha: 01/10/2023</p>
+        <p>Ubicación: Bilbao</p>
+        <!-- Otros detalles del anuncio aquí -->
+      </div>
+    </div>
+    <script>
+      // Cuando la página se carga
+      window.addEventListener("load", function () {
+        // Obtiene el elemento del anuncio
+        var anuncio = document.querySelector(".anuncio");
+
+        // Muestra el anuncio con una animación de opacidad
+        setTimeout(function () {
+          anuncio.style.opacity = "1";
+        }, 1000); // Retardo de 1 segundo (ajusta según tus necesidades)
+      });
+    </script>
+  </body>
+</html>
