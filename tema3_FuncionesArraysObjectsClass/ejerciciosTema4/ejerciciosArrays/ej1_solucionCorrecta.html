@@ -1,0 +1,43 @@
+Crea un script que defina un objeto llamado producto_alimenticio. Este objetodebe
+presentar las propiedades código, nombre y precio además del método imprimeDatos, el
+cual escribe por pantalla los valores de sus propiedades.Posteriormente escribe tres
+instancias de este objeto y guárdalas en un array. Muestra los datos por pantalla
+utilizando un bucle for.
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+		function imprimeDatosTotal(){ 
+   			document.write("<br><br>C&oacute;digo: " + this.codigo);
+   			document.write("<br>Nombre: " + this.nombre);
+   			document.write("<br>Precio: " + this.precio);
+		}
+
+		function ProductosAlimenticios(codigo_in, nombre_in, precio_in){ 
+   			this.codigo = codigo_in;
+   			this.nombre = nombre_in;
+			this.precio = precio_in;
+   			this.imprimeDatos = imprimeDatosTotal; 
+		}
+
+        var producto1 = new ProductosAlimenticios("1","Pan", "0.40");
+		var producto2 = new ProductosAlimenticios("2","Lentejas", "1.50");
+		var producto3 = new ProductosAlimenticios("3","Agua", "0.30");
+		
+		var productos = new Array(producto1, producto2, producto3);
+		for(i=0; i<productos.length; i++){
+			productos[i].imprimeDatos();
+		}
+
+	</script>
+ 
+</body>
+</html>
