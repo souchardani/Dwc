@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Evento keydown Mover Caja</title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <script>
+    window.onload = function () {
+      document.onkeydown = verCaracter;
+    };
+    function verCaracter(evento) {
+      if (window.event) var evento = window.event;
+      document.getElementById("string").innerHTML = evento.keyCode;
+      moverIzq(evento.keyCode);
+    }
+    function moverIzq(tecla) {
+      if (tecla == 39) {
+        document.getElementById("caja").style.marginLeft = "50px";
+      }
+    }
+  </script>
+  <body>
+    <span id="string"></span>
+    <div id="caja" style="width: 100px; height: 100px; background: red"></div>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Evento keydown Mover Caja Derecha Izquierda</title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <script>
+    window.onload = function () {
+      document.onkeydown = verCaracter;
+    };
+    var izquierdaDerecha = 0;
+    function verCaracter(evento) {
+      if (window.event) var evento = window.event;
+      document.getElementById("string").innerHTML = evento.keyCode;
+      moverIzq(evento.keyCode);
+    }
+    function moverIzq(tecla) {
+      if (tecla == 39) {
+        izquierdaDerecha += 10;
+        document.getElementById("caja").style.marginLeft =
+          izquierdaDerecha + "px";
+      }
+      if (tecla == 37) {
+        izquierdaDerecha -= 10;
+        document.getElementById("caja").style.marginLeft =
+          izquierdaDerecha + "px";
+      }
+      if (tecla == 65) {
+        document.getElementById("caja").style.borderRadius = "50px";
+      }
+    }
+  </script>
+  <body>
+    <h2>Pulsa las teclas y verás el código asociado a ellas</h2>
+    <h3>Si pulsas las flechas de desplazamiento moverás una caja</h3>
+    <h3>Si pulsas la tecla "a" conviertes la caja en un círculo</h3>
+    <span id="string"></span>
+    <div id="caja" style="width: 100px; height: 100px; background: red"></div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+  <body>
+    <p>
+      <b>Sintaxis: ObjetoArray.sort(sortFunction)</b><br />
+      Nota: Si no usamos función de comparación para definir el orden, la matriz
+      se ordenará siempre alfabéticamente. "500" vendrá antes que "7", pero en
+      una ordenación numérica, 7 viene antes que 500. Este ejemplo muestra como
+      usar la funcion de comparación que ordenará correctamente los elementos
+      tanto en una matriz numérica como de cadenas.<br /><br />
+
+      Si se proporciona una función en el argumento sortFunction, debe devolver
+      uno de los siguientes valores:<br /><br />
+      Un valor <b>negativo</b> si el primer argumento pasado es menor que el
+      segundo.<br />
+      <b>Cero</b> si los dos argumentos son equivalentes.<br />
+      Un valor <b>positivo</b> si el primer argumento es mayor que el
+      segundo.<br />
+    </p>
+
+    <script>
+      array1 = new Array("Rojo", "Verde", "Azul");
+      array2 = new Array("70", "9", "800");
+      array3 = new Array(50, 10, 2, 300);
+      array4 = new Array("70", "8", "850", 30, 10, 5, 400);
+
+      function compareNum(a, b) {
+        return a - b;
+      }
+
+      document.write("Array1: " + array1 + "<br>");
+      document.write("Array2: " + array2 + "<br>");
+      document.write("Array3: " + array3 + "<br>");
+      document.write("Array4: " + array4 + "<br><br>");
+
+      document.write("Array1 Ordenado: " + array1.sort());
+      document.write("<br><br>");
+
+      document.write("Array2 Ordenado sin compareNum: " + array2.sort());
+      document.write("<br>");
+      document.write(
+        "Array2 Ordenado con compareNum: " + array2.sort(compareNum)
+      );
+      document.write("<br><br>");
+
+      document.write("Array3 Ordenado sin compareNum: " + array3.sort());
+      document.write("<br>");
+      document.write(
+        "Array3 Ordenado con compareNum: " + array3.sort(compareNum)
+      );
+      document.write("<br><br>");
+
+      document.write("Array4 Ordenado sin compareNum: " + array4.sort());
+      document.write("<br>");
+      document.write(
+        "Array4 Ordenado con compareNum: " + array4.sort(compareNum)
+      );
+    </script>
+  </body>
+</html>

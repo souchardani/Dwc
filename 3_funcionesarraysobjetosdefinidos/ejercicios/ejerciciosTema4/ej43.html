@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var nombres = new Array();
+      var i = 1;
+      document.write(
+        "Nombres de los socios tal y como se han introducido:" + "<br><br>"
+      );
+      do {
+        nombres[i - 1] = prompt("Introduce el nombre del socio numero: " + i);
+        i++;
+      } while (i <= 10);
+
+      for (var x = 0; x < nombres.length; x++) {
+        document.write(nombres[x] + "<br>");
+      }
+
+      document.write(
+        "<br>" + "El numero de socios es: " + nombres.length + "<br>"
+      );
+
+      document.write(
+        "<br>" + "Nombres de los socios ordenados a la inversa" + "<br><br>"
+      );
+
+      nombres.reverse();
+      for (var x = 0; x < nombres.length; x++) {
+        document.write(nombres[x] + "<br>");
+      }
+      document.write(
+        "<br>" + "Nombres de los socios ordenados alfabeticamente" + "<br><br>"
+      );
+      nombres.sort();
+      for (var x = 0; x < nombres.length; x++) {
+        document.write(nombres[x] + "<br>");
+      }
+    </script>
+  </body>
+</html>

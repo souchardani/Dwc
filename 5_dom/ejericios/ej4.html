@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ejercicio4 - DOM básico y atributos XHTML</title>
+    <style>
+      #borde {
+        border: thick solid black;
+      }
+    </style>
+
+    <script type="text/javascript">
+      var eventos = function () {
+        document.getElementById("b1").onclick = cambioBordeR;
+        document.getElementById("b2").addEventListener("click", cambioBordeV);
+      };
+
+      function cambioBordeR() {
+        document.getElementById("borde").style.borderColor = "red";
+      }
+      function cambioBordeV() {
+        document.getElementById("borde").style.borderColor = "green";
+      }
+
+      window.onload = eventos;
+    </script>
+  </head>
+  <body>
+    <div id="borde">
+      <p>hola es to es una prueba de color de bordes</p>
+    </div>
+
+    <input id="b1" type="button" value="cambiar borde a rojo" />
+    <input id="b2" type="button" value="cambiar borde a verde" />
+  </body>
+</html>

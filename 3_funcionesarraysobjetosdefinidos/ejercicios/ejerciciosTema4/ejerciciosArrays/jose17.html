@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function maximo() {
+        var max = this[0];
+        for (let i = 0; i < this.length; i++) {
+          if (this[i] > max) max = this[i];
+        }
+        return max;
+      }
+      Array.prototype.max = maximo;
+      var ar2 = new Array(2, 45, 3, 66, 7);
+
+      var ar1 = [2, 56, 7, 88, 3];
+      console.log(ar1.max());
+      //console.log(ar2.max());
+    </script>
+  </body>
+</html>

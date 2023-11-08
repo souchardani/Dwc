@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Evento keydown</title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <script>
+    window.onload = function () {
+      document.onkeydown = verCaracter;
+    };
+    function verCaracter(evento) {
+      if (window.event) evento = window.event;
+      document.getElementById("string").innerHTML = evento.keyCode;
+    }
+  </script>
+  <body>
+    <span id="string"></span>
+  </body>
+</html>

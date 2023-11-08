@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>
+		
+	</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		//PASO 1
+			/*var contador=0;
+			var incremento=function(){
+				contador++;
+				console.log(contador);
+			}
+			incremento();
+			incremento();
+			*/
+		//PASO 2
+			/*var contador=function(){
+				var c=0;
+				var incremento=function(){
+					c++;
+					console.log(c);
+				}
+
+			}
+			contador();  //Vemos que no ocurre nada porque contador lo unico que hace es definir dos funciones
+			contador();
+			*/
+
+		//PASO 3
+			/*var contador = function(){
+				var c = 0;
+				var incremento = function(){
+					c++;
+					console.log(c);
+				}
+				incremento();
+			};
+
+			contador();
+			contador(); //Vemos que escribe 1 dos veces
+			*/
+
+		//PASO 4
+			var contador = function(){
+				var c = 0;
+				var incremento = function(){
+					c++;
+					console.log(c);
+				}
+				return incremento;
+			};
+
+			var cuenta=contador();
+			console.log(cuenta);
+			cuenta();//c=1
+			cuenta();//c=2
+			cuenta();//c=3
+			
+	</script>
+</body>
+</html>

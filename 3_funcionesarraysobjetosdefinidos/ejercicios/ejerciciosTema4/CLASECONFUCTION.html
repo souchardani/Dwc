@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //constructor sin parámetros
+      function Usuario() {}
+
+      //constructor con parametros
+      function Usuario(nombre, apellidos, dni, anoNacimiento, provincia) {
+        this.nombre = nombre;
+        this.apellido = apellidos;
+        this.dni = dni;
+        this.anoNacimiento = anoNacimiento;
+        this.provincia = provincia;
+
+        this.getNombre = function () {
+          return this.nombre;
+        };
+        this.setNombre = function (nombre) {
+          this.nombre = nombre;
+        };
+        this.generalLogin = function () {
+          return (
+            this.nombre[0] +
+            this.apellido[0] +
+            this.anoNacimiento.toString().split("")[2] +
+            this.anoNacimiento.toString().split("")[3]
+          );
+        };
+      }
+
+      //Aquí inicializo los elementos de uno en uno porque no hay constructor
+      user1 = new Usuario();
+      user1.nombre = "jose";
+      user1.apellidos = "insausti";
+      user1.dn1 = "11223344A";
+      user1.anoNacimiento = 1969;
+      user1.provincia = "Bizkaia";
+      console.log(`nombre: ${user1.nombre}, apellidos: ${user1.apellidos} `);
+
+      //Aquí sí utilizoel constructor
+      user2 = new Usuario("jose2", "insausti2", "12345678A", 1970, "Bizkaia2");
+      console.log(user2.nombre);
+      console.log(user2.getNombre());
+
+      user2.setNombre("josetxu");
+      console.log(user2.getNombre());
+      console.log(user2.generalLogin());
+    </script>
+  </body>
+</html>

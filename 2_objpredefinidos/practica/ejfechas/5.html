@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>Objeto Date</title>
+  </head>
+  <body>
+    <script>
+      function minMilli() {
+        return 1000 * 60;
+      }
+      function hrMilli() {
+        return minMilli() * 60;
+      }
+      function dyMilli() {
+        return hrMilli() * 24;
+      }
+      function anyoMilli() {
+        return dyMilli() * 365;
+      }
+      function mesMilli() {
+        return anyoMilli() / 12;
+      }
+
+      var fechaString = prompt(
+        "Introduce la fecha de tu nacimiento en formato correcto (dd/mm/aaaa):"
+      );
+      var ddmmaaaa = new Array();
+      ddmmaaaa = fechaString.split("/");
+      document.write(ddmmaaaa);
+      //var fecha1 = new Date(fechaString);
+      var fechaNac = new Date(ddmmaaaa[2], ddmmaaaa[1] - 1, ddmmaaaa[0]);
+
+      Date.prototype.calculaAnyos = calculaAnyos;
+      function calculaAnyos() {
+        return Math.floor((Date.now() - this.getTime()) / anyoMilli());
+      }
+      Date.prototype.calculaMeses = calculaMeses;
+      function calculaMeses() {
+        var resto = (Date.now() - this.getTime()) % anyoMilli();
+        //var resto = Date.now() - (this.calculaAnyos() * anyoMilli())
+        alert(resto);
+        return Math.floor(resto / mesMilli());
+      }
+
+      Date.prototype.calculaDias = calculaDias;
+      function calculaDias() {
+        var resto = (Date.now() - this.getTime()) % anyoMilli();
+        resto = Math.floor(resto % mesMilli());
+        return Math.floor(resto / dyMilli());
+      }
+      alert(
+        "Tienes: " +
+          fechaNac.calculaAnyos() +
+          " a\xf1os, " +
+          fechaNac.calculaMeses() +
+          " meses y " +
+          fechaNac.calculaDias() +
+          " días."
+      );
+
+      /*var ms = Date.parse(new Date("June 1, 1990));
+		var days = Math.round(ms / dyMilli);
+
+		var dateStr = "";
+		dateStr += "There are " + days + " days ";
+		dateStr += "between 01/01/1970 and " + testDate;
+		document.write(dateStr);
+*/
+    </script>
+  </body>
+</html>

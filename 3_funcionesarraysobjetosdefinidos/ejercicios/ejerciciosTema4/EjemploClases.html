@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Si usamos nombre en lugar de _nombre, se produce un bucle infinito al hacer set
+        class Heroe {
+            //Podemos inicializar el nivel
+            constructor(nombre, nivel=1) {
+                this._nombre = nombre;
+                this._nivel = nivel;
+            }
+
+            saludo() {
+                return `${this._nombre} dice hola.`;
+            }
+
+            get nombre() { return this._nombre; }
+            set nombre(nombre) { this._nombre = nombre; }
+            get nivel() { return this._nivel; }
+            set nivel(nivel) { this._nivel = nivel; }
+
+        }
+
+        class Mago extends Heroe {
+            constructor(nombre, nivel, idioma) {
+                super(nombre, nivel);
+                this._idioma = idioma;
+            }
+            get idioma() { return this._idioma; }
+            set idioma(idioma) { this._idioma = idioma; }
+            saludo() {
+                return `Soy ${this._nombre} y hablo ${this._idioma}.`;
+            }
+
+        }
+        let mago = new Mago("Pepe", 1, "euskera");
+        console.log(mago.saludo());
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 3.6</title>
+	</head>
+	<body>
+		<script>
+			//window.open('','asdasdcv','height=200,width=150,top=50,left=50')
+			var texto=prompt("introduce un texto: ");
+		</script>						
+			<input type="button" value="Mostrar texto en nueva ventana" onclick="
+			var nueva=window.open('','Otra ventana','height=450,width=450,top=200,left=250');
+			nueva.document.write('<html><head><title>Nueva ventana creada</title></head>');
+			nueva.document.write('<body><h1>El texto introducido por el usuario es <br><br>');
+			nueva.document.write('<font color=#FF0000>'+texto +'</font> </h1>');
+			nueva.document.write('<input type=button value=Cerrar onClick=window.close()></body></html>');
+			">
+			</button> 
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div id="div1">
+      <p>div1 - Primer parrafo</p>
+      <p id="p1">div2 - Segundo parrafo</p>
+      <div id="div2">
+        <p>div2 - Parrafo 1</p>
+        <p>div2 - Parrafo 2</p>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var pnuevo = document.createElement("p");
+      var textnuevo = document.createTextNode("parrafo nuevo");
+      var e = pnuevo.appendChild(textnuevo);
+      var i = document.getElementById("p1");
+      alert(i);
+      insertAfter(e, i);
+      /*	function insertAfter(e,i){ 
+        if(e.nextElementSibling){ 
+            e.parentNode.insertBefore(i,e.nextElementSibling); 
+        } else { 
+            e.parentNode.appendChild(i); 
+        }
+    }*/
+      function insertAfter(i, e) {
+        e.parentNode.insertBefore(i, e.nextElementSibling);
+      }
+    </script>
+  </body>
+</html>

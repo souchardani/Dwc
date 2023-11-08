@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="”es”">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ejercicio 13 Menu de opciones matematicas</title>
+    <script>
+      document.write("1-Redondeo a su inmediato superior de un número");
+      document.write("<br>");
+      document.write("2-Redondeo a su inmediato inferior de un número");
+      document.write("<br>");
+      document.write("3-Redondeo al número más cercano");
+      document.write("<br>");
+      document.write("4-Cálculo del número máximo entre dos dados");
+      document.write("<br>");
+      document.write("5-Cálculo del número mínimo entre dos dados");
+      document.write("<br>");
+      document.write("6-Cálculo de un número elevado a otro");
+      document.write("<br>");
+      document.write("7-Cálculo de la raiz cuadrada de un número");
+
+      var opcion = prompt("elije una opcion");
+      opcion = parseInt(opcion);
+      document.write("<br>");
+
+      switch (opcion) {
+        case 1:
+          var numeroD = prompt("Escribe un numero decimal");
+          var respuesta = Math.ceil(numeroD);
+          alert("el numero redondeado hacia arriba es " + respuesta);
+          break;
+
+        case 2:
+          var numeroD = prompt("Escribe un numero decimal");
+          var respuesta = Math.floor(numeroD);
+          alert("el numero redondeado hacia abajo es " + respuesta);
+          break;
+
+        case 3:
+          var numeroD = prompt("Escribe un numero decimal");
+          var respuesta = Math.round(numeroD);
+          alert("el numero redondeado es " + respuesta);
+
+          break;
+
+        case 4:
+          var n1 = prompt("dame un numero");
+          n1 = parseInt(n1);
+          var n2 = prompt("dame otro numero");
+          n2 = parseInt(n2);
+          if (n1 > n2) alert(+n1 + " es mayor que " + n2);
+          else alert(+n2 + " es mayor que " + n1);
+          break;
+
+        case 5:
+          var n1 = prompt("dame un numero");
+          n1 = parseInt(n1);
+          var n2 = prompt("dame otro numero");
+          n2 = parseInt(n2);
+          if (n1 < n2) alert(+n1 + " es menor que " + n2);
+          else alert(+n2 + " es menor que " + n1);
+          break;
+
+        case 6:
+          var numero = prompt("Escribe un numero");
+          var elevar = prompt(
+            "Escribe a que numero quieres elevar el anterior"
+          );
+          var potencia = Math.pow(numero, elevar);
+          alert(+numero + " elevado a " + elevar + " es :" + potencia);
+          break;
+
+        case 7:
+          var numero = prompt("Escribe un numero para darte su raiz cuadrada");
+          var raiz = Math.sqrt(numero);
+          alert(raiz);
+          break;
+
+        default:
+          alert("La opción introducida no es correcta");
+      }
+    </script>
+  </head>
+
+  <body>
+    <p></p>
+  </body>
+</html>

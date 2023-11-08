@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ejercicio 3.12</title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h3>
+      12. Hacer un script que pida la direcciรณn de correo electrรณnico de un
+      usuario y devuelva el nombre del servidor.
+    </h3>
+    <!-- Hacer un script que pida la direcciรณn de correo electrรณnico de un usuario y devuelva el nombre del servidor. -->
+    <script>
+      var email = prompt("Introduce el correo electrรณnico: ");
+      var dominio = email.substring(email.indexOf("@") + 1);
+      document.write(
+        "<h5>El dominio del email introducido es <br> <br> " + dominio + "</h5>"
+      );
+    </script>
+  </body>
+</html>

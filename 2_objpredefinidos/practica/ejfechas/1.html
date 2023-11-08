@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>Objeto Date</title>
+  </head>
+  <body>
+    <script>
+      var startTime = new Date();
+      var nombre = prompt("Introduce tu nombre");
+      var endTime = new Date();
+      var elapsed = Math.floor(
+        (endTime.getTime() - startTime.getTime()) / 1000
+      );
+      document.write("Has tardado: " + elapsed + " segundos");
+    </script>
+  </body>
+</html>

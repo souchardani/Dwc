@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ejercicio 3.3 Objeto Navegador</title>
+  </head>
+  <body>
+    <script>
+      document.write("Navegador: " + navigator.appName);
+      document.write("<br>Version: " + navigator.appVersion);
+      if (navigator.javaEnabled()) {
+        document.write(
+          "<br>El navegador SI esta preparado para ejecutar applets de Java"
+        );
+      } else {
+        document.write(
+          "<br>El navegador NO esta preparado para ejecutar applets de Java"
+        );
+      }
+    </script>
+  </body>
+</html>

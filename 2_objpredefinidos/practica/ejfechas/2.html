@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>Objeto Date</title>
+  </head>
+  <body>
+    <script>
+      var birthday = new Date("8/1/1985");
+      var today = new Date();
+      var years = today.getFullYear() - birthday.getFullYear();
+
+      // Reseteamos birthday con el año actual.
+      birthday.setFullYear(today.getFullYear());
+
+      // al comparar las fechas si today<birthday significa que todavía no hemos llegado al cumpleaños. Pro lo que restamos un año
+      if (today < birthday) {
+        years--;
+      }
+      document.write("Tienes " + years + " años.");
+
+      // Output: You are years years old.
+    </script>
+  </body>
+</html>

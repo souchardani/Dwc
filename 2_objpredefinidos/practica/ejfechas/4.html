@@ -1,0 +1,81 @@
+<html lang="es">
+  <head>
+    <title>Date</title>
+    <script>
+      <!-- se oculta la información de los navegadores antiguos
+
+      Date.prototype.cambiaDia = cambiaDia;
+
+      function cambiaDia() {
+        var dias = new Array(7);
+
+        dias[0] = "Domingo";
+        dias[1] = "Lunes";
+        dias[2] = "Martes";
+        dias[3] = "Miércoles";
+        dias[4] = "Jueves";
+        dias[5] = "Viernes";
+        dias[6] = "Sábado";
+
+        return dias[this.getDay()];
+      }
+
+      function cambiaAnio() {
+        return 1900 + this.getYear();
+      }
+
+      // final del comentario -->
+    </script>
+  </head>
+  <body>
+    <center>
+      <script>
+        <!-- se oculta la información de los navegadores antiguos
+        var fechaString = prompt(
+          "Introduce una fecha en formato correcto (dd/mm/aaaa):"
+        );
+        //document.write(Date.parse(fechaString));
+        var numanyos = prompt("Introduce el número de años a calcular:");
+
+        var ddmmaaaa = new Array();
+        ddmmaaaa = fechaString.split("/");
+        //Hay que comprobar que la fecha sea correcta...
+        //document.write(ddmmaaaa);
+        //var fecha1 = new Date(fechaString);
+        var fecha1 = new Date(ddmmaaaa[2], ddmmaaaa[1] - 1, ddmmaaaa[0]);
+        //var fecha1 = new Date(2012,0,25);
+        var arrayFechas = new Array(numanyos);
+        for (i = 0; i < numanyos; i++) {
+          arrayFechas[i] = new Date(
+            fecha1.getFullYear() - (i + 1),
+            fecha1.getMonth(),
+            fecha1.getDate()
+          );
+        }
+
+        document.write("<H2>Manejando el objeto Date...</H2>");
+        document.write("Has introducido: " + fecha1.toLocaleDateString());
+        document.write("<BR><BR>Han pasado ");
+        document.write(fecha1.getTime());
+        document.write(" milisegundos <BR>");
+        document.write("desde las 00:00:00 horas del 1/1/1970<BR>");
+        document.write("<BR>Este mismo día en ...<BR><BR>");
+        document.write("<TABLE BORDER=1 CELLPADDING=4>");
+        document.write("<TR ALIGN=CENTER><TD>el año...</TD>");
+        for (i = 0; i < numanyos; i++) {
+          document.write("<TD>" + arrayFechas[i].getFullYear() + "</TD>");
+        }
+        document.write("</TR>");
+        document.write("<TR ALIGN=CENTER><TD>era un...</TD>");
+        for (i = 0; i < numanyos; i++) {
+          document.write("<TD>" + arrayFechas[i].cambiaDia() + "</TD>");
+        }
+        document.write("</TR>");
+        document.write("</TABLE>");
+        document.write("<H2>...Hecho</H2>");
+
+        // final del comentario -->
+      </script>
+    </center>
+  </body>
+</html>

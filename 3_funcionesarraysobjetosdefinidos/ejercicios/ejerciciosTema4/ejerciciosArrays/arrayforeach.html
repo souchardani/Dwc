@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>JavaScript Arrays</h2>
+
+    <p>Array.forEach() calls a function for each array element.</p>
+
+    <p id="demo"></p>
+
+    <script>
+      const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+      var text = "<ul>";
+
+      fruits.forEach((value) => (text += "<li>" + value + "</li>"));
+      text += "</ul>";
+
+      document.getElementById("demo").innerHTML = text;
+    </script>
+  </body>
+</html>

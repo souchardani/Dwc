@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ejercicio 3 - DOM básico y atributos HTML</title>
+
+    <script type="text/javascript">
+      var eventos = function () {
+        document.getElementById("b1").onclick = anade;
+      };
+
+      function anade() {
+        var elemento = document.createElement("li");
+        var texto = document.createTextNode("Elemento de prueba");
+        elemento.appendChild(texto);
+
+        var lista = document.getElementById("lista");
+        lista.appendChild(elemento);
+      }
+
+      window.onload = eventos;
+    </script>
+  </head>
+
+  <body>
+    <ul id="lista">
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetuer adipiscing elit</li>
+      <li>Sed mattis enim vitae orci</li>
+      <li>Phasellus libero</li>
+      <li>Maecenas nisl arcu</li>
+    </ul>
+
+    <input id="b1" type="button" value="Añadir elemento" />
+  </body>
+</html>

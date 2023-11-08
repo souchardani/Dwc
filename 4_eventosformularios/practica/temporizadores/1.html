@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <script>
+      <!--
+      var matrizNumeros = new Array();
+      matrizNumeros[0] = new Image(50, 50);
+      matrizNumeros[0].src = "imagenes/cero.png";
+      matrizNumeros[1] = new Image(50, 50);
+      matrizNumeros[1].src = "imagenes/uno.png";
+      matrizNumeros[2] = new Image(50, 50);
+      matrizNumeros[2].src = "imagenes/dos.png";
+      matrizNumeros[3] = new Image(50, 50);
+      matrizNumeros[3].src = "imagenes/tres.png";
+      matrizNumeros[4] = new Image(50, 50);
+      matrizNumeros[4].src = "imagenes/cuatro.png";
+      matrizNumeros[5] = new Image(50, 50);
+      matrizNumeros[5].src = "imagenes/cinco.png";
+      matrizNumeros[6] = new Image(50, 50);
+      matrizNumeros[6].src = "imagenes/seis.png";
+      matrizNumeros[7] = new Image(50, 50);
+      matrizNumeros[7].src = "imagenes/siete.png";
+      matrizNumeros[8] = new Image(50, 50);
+      matrizNumeros[8].src = "imagenes/ocho.png";
+      matrizNumeros[9] = new Image(50, 50);
+      matrizNumeros[9].src = "imagenes/nueve.png";
+
+      var indice = 0;
+
+      function ajustar() {
+        tiempo = new Date();
+        dia = tiempo.getDate();
+        mes = tiempo.getMonth() + 1;
+        anual = tiempo.getFullYear();
+        horas = tiempo.getHours();
+        minutos = tiempo.getMinutes();
+        segundos = tiempo.getSeconds();
+
+        indice = Math.floor(dia / 10);
+        document.images["dia1"].src = matrizNumeros[indice].src;
+        indice = dia % 10;
+        document.images["dia2"].src = matrizNumeros[indice].src;
+
+        indice = Math.floor(mes / 10);
+        document.images["mes1"].src = matrizNumeros[indice].src;
+        indice = mes % 10;
+        document.images["mes2"].src = matrizNumeros[indice].src;
+
+        indice = Math.floor(anual / 1000);
+        document.images["anual1"].src = matrizNumeros[indice].src;
+        anual -= indice * 1000;
+        indice = Math.floor(anual / 100);
+        document.images["anual2"].src = matrizNumeros[indice].src;
+        anual -= indice * 100;
+        indice = Math.floor(anual / 10);
+        document.images["anual3"].src = matrizNumeros[indice].src;
+        indice = anual % 10;
+        document.images["anual4"].src = matrizNumeros[indice].src;
+
+        indice = Math.floor(horas / 10);
+        document.images["hora1"].src = matrizNumeros[indice].src;
+        indice = horas % 10;
+        document.images["hora2"].src = matrizNumeros[indice].src;
+
+        indice = Math.floor(minutos / 10);
+        document.images["minuto1"].src = matrizNumeros[indice].src;
+        indice = minutos % 10;
+        document.images["minuto2"].src = matrizNumeros[indice].src;
+
+        indice = Math.floor(segundos / 10);
+        document.images["segundo1"].src = matrizNumeros[indice].src;
+        indice = segundos % 10;
+        //this.document.segundo2.src = matrizNumeros[indice].src;
+        //document.segundo2.src = matrizNumeros[indice].src;
+        //segundo2.src = matrizNumeros[indice].src;
+        //document.images["segundo2"].src = matrizNumeros[indice].src;
+        //document.images[17].src = matrizNumeros[indice].src;
+        //document.getElementsByTagName("img")[17].src = matrizNumeros[indice].src;
+        document.getElementsByName("segundo2")[0].src =
+          matrizNumeros[indice].src;
+
+        return true;
+      }
+      function iniciar() {
+        demora = setInterval("ajustar()", 1000);
+      }
+      function detener() {
+        clearInterval(demora);
+      }
+      /*window.onload = function() {
+                iniciar();
+        }*/
+      //-->
+    </script>
+  </head>
+  <body>
+    <table
+      border="1"
+      width="480"
+      cellpadding="0"
+      cellspacing="0"
+      bgcolor="#000000"
+    >
+      <tr height="50">
+        <td width="50"><img name="dia1" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="dia2" src="imagenes/cero.png" /></td>
+        <td width="40"><img src="imagenes/fecha.png" /></td>
+        <td width="50"><img name="mes1" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="mes2" src="imagenes/cero.png" /></td>
+        <td width="40"><img src="imagenes/fecha.png" /></td>
+        <td width="50"><img name="anual1" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="anual2" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="anual3" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="anual4" src="imagenes/cero.png" /></td>
+      </tr>
+    </table>
+
+    <table
+      border="1"
+      width="324"
+      cellpaddin="0"
+      cellspacing="0"
+      bgcolor="#000000"
+    >
+      <tr height="50">
+        <td width="50"><img name="hora1" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="hora2" src="imagenes/cero.png" /></td>
+        <td width="12"><img src="imagenes/hora.png" /></td>
+        <td width="50"><img name="minuto1" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="minuto2" src="imagenes/cero.png" /></td>
+        <td width="12"><img src="imagenes/hora.png" /></td>
+        <td width="50"><img name="segundo1" src="imagenes/cero.png" /></td>
+        <td width="50"><img name="segundo2" src="imagenes/cero.png" /></td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td><input type="button" value="Arrancar" onclick="iniciar()" /></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="Detener" onclick="detener()" /></td>
+      </tr>
+    </table>
+  </body>
+</html>

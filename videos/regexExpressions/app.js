@@ -9,4 +9,15 @@
 //.at // mathea absolutamente todo que incluya ej. match cat eat
 // \w matchea cualquier palabra y letras
 // \s matchea cualquier espacio qye haya
-let exp = hola;
+
+//todas las palabras con 4 letras
+let exp = /\w{4}/g;
+
+//todos los caracteres que no sean letras
+let exp1 = /\W/g;
+
+//todos los espacios
+let exp2 = /\s/g;
+
+//todos los espacios en blanco
+let exp3 = /\s/g;

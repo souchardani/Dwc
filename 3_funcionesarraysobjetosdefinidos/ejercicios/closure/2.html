@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <script>
+      var sumatorio = function (inicio) {
+        var total = inicio;
+        var sumar = function (constante) {
+          total = total + constante;
+          console.log(total);
+        };
+        return sumar;
+      };
+
+      var suma10 = sumatorio(10);
+      var suma15 = sumatorio(15);
+      suma10(3);
+      suma10(3);
+      suma15(5);
+    </script>
+  </body>
+</html>

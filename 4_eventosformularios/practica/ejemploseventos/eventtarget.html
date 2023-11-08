@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <link rel="stylesheet" href="" />
+    <script>
+      var veces = 0;
+      function parrafoClick(e) {
+        alert(e.clientX);
+        veces++;
+        if (veces >= 2) {
+          alert("ya has pulsado 2 veces");
+          document
+            .getElementById("p1")
+            .removeEventListener("click", parrafoClick);
+        }
+      }
+
+      function eventos() {
+        document.getElementById("p1").addEventListener("click", parrafoClick);
+      }
+      window.addEventListener("load", eventos);
+    </script>
+  </head>
+  <body>
+    <h1>Pincha en el parrafo y te dirá la posición</h1>
+    <p id="p1" name="parrafo">asdjnasd sdvj s vsjd vsjv sdkvj sd</p>
+  </body>
+</html>

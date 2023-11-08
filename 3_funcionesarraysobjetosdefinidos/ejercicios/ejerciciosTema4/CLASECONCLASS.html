@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //constructor con parametros
+      class Usuario {
+        constructor(
+          nombre,
+          apellidos,
+          dni,
+          anoNacimiento = 2000,
+          provincia = "Bizkaia"
+        ) {
+          this._nombre = nombre;
+          this._apellido = apellidos;
+          this._dni = dni;
+          this._anoNacimiento = anoNacimiento;
+          this._provincia = provincia;
+        }
+
+        get nombre() {
+          return this._nombre;
+        }
+        set nombre(nombre) {
+          this._nombre = nombre;
+        }
+        generalLogin() {
+          return (
+            this._nombre[0] +
+            this._apellido[0] +
+            this._anoNacimiento.toString().split("")[2] +
+            this._anoNacimiento.toString().split("")[3]
+          );
+        }
+      }
+
+      //Aquí sí utilizoel constructor
+      user2 = new Usuario("jose2", "insausti2", "12345678A", 1970, "Bizkaia2");
+      console.log(user2.nombre);
+      console.log(user2.nombre);
+
+      user2.nombre = "josetxu";
+      console.log(user2.nombre);
+      console.log(user2.generalLogin());
+    </script>
+  </body>
+</html>

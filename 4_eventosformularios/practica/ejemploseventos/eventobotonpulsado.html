@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title> </title>
+    <link rel="stylesheet" href="" />
+    <script>
+      var whichButton = function (e) {
+        // Handle different event models
+        var e = e || window.event;
+        var btnCode;
+
+        if ("object" === typeof e) {
+          btnCode = e.button;
+          alert(btnCode);
+          switch (btnCode) {
+            case 0:
+              console.log("Boton izquierdo clicado");
+              break;
+
+            case 1:
+              console.log("Boton central clicado");
+              break;
+
+            case 2:
+              console.log("Boton derecho clicado.");
+              break;
+
+            default:
+              console.log("Error codigo: " + btnCode);
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Pincha el botón</h1>
+    <button
+      onmouseup="whichButton(event);"
+      oncontextmenu="event.preventDefault();"
+    >
+      Haz click...
+    </button>
+  </body>
+</html>

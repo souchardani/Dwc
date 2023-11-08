@@ -1,0 +1,107 @@
+<html>
+  <body>
+    <p>
+      <b>Sintaxis: ObjetoArray.sort(sortFunction)</b><br />
+      Nota: Si no usamos función de comparación para definir el orden, la matriz
+      se ordenará siempre alfabéticamente. "500" vendrá antes que "7", pero en
+      una ordenación numérica, 7 viene antes que 500. Este ejemplo muestra como
+      usar la funcion de comparación que ordenará correctamente los elementos
+      tanto en una matriz numérica como de cadenas.<br /><br />
+
+      Si se proporciona una función en el argumento sortFunction, debe devolver
+      uno de los siguientes valores:<br /><br />
+      Un valor <b>negativo</b> si el primer argumento pasado es menor que el
+      segundo.<br />
+      <b>Cero</b> si los dos argumentos son equivalentes.<br />
+      Un valor <b>positivo</b> si el primer argumento es mayor que el
+      segundo.<br />
+    </p>
+
+    <script>
+      /*  Array.prototype.sortNumerico = function() {
+		return this.sort( function (a,b) { return a-b; } );
+	}
+ */
+      function compareNum(a, b) {
+        return a - b;
+      }
+      function comparar() {
+        return this.sort(compareNum);
+      }
+      Array.prototype.sortNumerico = comparar;
+
+      array1 = new Array("Rojo", "Verde", "Azul");
+      array2 = new Array("70", "9", "800");
+      array3 = new Array(50, 10, 2, 300);
+      array4 = new Array("70", "8", "850", 30, 10, 5, 400);
+
+      function array_max() {
+        var i,
+          max = this[0];
+        for (i = 1; i < this.length; i++) {
+          if (max < this[i]) max = this[i];
+        }
+        return max;
+      }
+      Array.prototype.max = array_max;
+      var myArray = new Array(7, 1, 3, 11, 25, 9);
+      document.write(myArray.max());
+
+      /*function compareNum(a, b)
+	{
+    var first = parseInt(a);
+    var second = parseInt(b);
+
+    if (first == second)
+        return 0;
+    if (first < second)
+        return -1;
+    else
+        return 1; 
+	}*/
+      function MostrarArray(unArray) {
+        for (i = 0; i < unArray.length; i++) {
+          //document.write(typeof unArray[i]);
+          if (typeof unArray[i] == "string")
+            //(isNaN (unArray[i]))--> de esta forma no puedo saber si es un número o un string
+            document.write('"' + unArray[i] + '",');
+          if (typeof unArray[i] == "number") document.write(unArray[i] + ",");
+        }
+        document.write("<br>");
+      }
+
+      document.write("Array1: ");
+      MostrarArray(array1);
+      document.write("Array2: ");
+      MostrarArray(array2);
+      document.write("Array3: ");
+      MostrarArray(array3);
+      document.write("Array4: ");
+      MostrarArray(array4);
+      document.write("<br><br>");
+
+      document.write("Array1 Ordenado: " + array1.sortNumerico());
+      document.write("<br><br>");
+
+      document.write("Array2 Ordenado sin compareNum: " + array2.sort());
+      document.write("<br>");
+      document.write(
+        "Array2 Ordenado con compareNum: " + array2.sortNumerico()
+      );
+      document.write("<br><br>");
+
+      document.write("Array3 Ordenado sin compareNum: " + array3.sort());
+      document.write("<br>");
+      document.write(
+        "Array3 Ordenado con compareNum: " + array3.sortNumerico()
+      );
+      document.write("<br><br>");
+
+      document.write("Array4 Ordenado sin compareNum: " + array4.sort());
+      document.write("<br>");
+      document.write(
+        "Array4 Ordenado con compareNum: " + array4.sortNumerico()
+      );
+    </script>
+  </body>
+</html>

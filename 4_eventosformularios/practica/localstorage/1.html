@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<form>
+    Usuario: <input type="text" name="login" id="login"> <br>
+    Contraseña: <input type="password" name="password" id="password" > <br>
+    <input type="checkbox" name="recordar" id="recordar">
+    <label for="recordar">Recordar mi usuario y contraseña</label> <br>
+    <input type="button" id="entrar" value="Entrar">
+</form>
+
+
+<script>
+// Cargar los datos del Local Storage en los campos de formulario si existen
+window.onload = function () {
+    var storedLogin = localStorage.getItem('login');
+    var storedPassword = localStorage.getItem('password');
+    if (storedLogin && storedPassword) {
+        document.getElementById('login').value = storedLogin;
+        document.getElementById('password').value = storedPassword;
+        document.getElementById('recordar').checked = true;
+    }
+};
+
+// Guardar los datos en el Local Storage cuando se pulsa el botón "entrar"
+document.getElementById("entrar").onclick = function() {
+    var login = document.getElementById('login').value;
+    var password = document.getElementById('password').value;
+    var recordar = document.getElementById('recordar').checked;
+
+    if (recordar) {
+        localStorage.setItem('login', login);
+        localStorage.setItem('password', password);
+    } else {
+        localStorage.removeItem('login');
+        localStorage.removeItem('password');
+    }
+
+    console.log("Se ha pulsado el botón de login");
+};
+</script>
+</html>
+</body>
+</html>

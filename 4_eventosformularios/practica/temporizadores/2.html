@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var eventos = function (){
+            document.getElementById("arrancar").addEventListener('click', Arrancar);
+            document.getElementById("detener").addEventListener('click', Detener);
+            };
+        window.addEventListener('load', eventos); //Si lo declaro arriba la var eventos todavia no existe
+
+        var tempReloj;
+        function muestraReloj() {
+            var fechaHora = new Date();
+            var horas = fechaHora.getHours();
+            var minutos = fechaHora.getMinutes();
+            var segundos = fechaHora.getSeconds();
+        
+            if(horas < 10) { horas = '0' + horas; }
+            if(minutos < 10) { minutos = '0' + minutos; }
+            if(segundos < 10) { segundos = '0' + segundos; }
+        
+            document.getElementById("reloj").innerHTML = '<h1>RELOJ</h1> <br/>'+horas+':'+minutos+':'+segundos;
+        }
+
+        function Arrancar(){
+            tempReloj=setInterval(muestraReloj, 1000);
+        }
+
+        function Detener(){
+            clearInterval(tempReloj);	
+        }
+    </script>
+    <div id="reloj" align="center" style="width:200px; height:180px; border: 3px solid red;position:absolute; top:50px; left:50px"/><h1>RELOJ</h1></div>
+    <br/>
+    <form>
+    <input type="button" id="arrancar" value="Arrancar"  />
+    <input type="button" id="detener" value="Detener" />
+    </form>
+</body>
+</html>
