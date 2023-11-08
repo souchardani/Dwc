@@ -2,6 +2,7 @@ let txtNombre;
 let txtApellido;
 let inputs;
 let inputMarcas;
+let form;
 // let coches = [
 //   {
 //     marca: "Mercedes",
@@ -35,6 +36,10 @@ function init() {
   inputMarcas.addEventListener("change", cargarModelo);
   colortxt();
   cargarMarcas();
+  form = document.querySelector("form");
+  form.addEventListener("submit", function (e) {
+    validar(e);
+  });
 }
 
 function colortxt() {
@@ -77,4 +82,18 @@ function cargarModelo() {
     option.value = element;
     inputModelo.appendChild(option);
   });
+}
+
+function validar(e) {
+  let isValid = true;
+  inputs.forEach((element) => {
+    if (element.value == "") {
+      isValid = false;
+      element.style.backgroundColor = "red";
+      alert("El campo " + element.name + " no puede estar vacio");
+    }
+  });
+  if (!isValid) {
+    e.preventDefault();
+  }
 }

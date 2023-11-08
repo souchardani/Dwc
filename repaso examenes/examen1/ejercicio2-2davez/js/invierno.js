@@ -2,6 +2,7 @@ let txtNombre;
 let txtPuntuacion;
 let txtPais;
 let btnAnadir;
+let inputs;
 
 document.addEventListener("DOMContentLoaded", function () {
   //botones
@@ -9,13 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
   btnAnadir.addEventListener("click", anadirFila);
   btnEliminar = document.getElementById("borrar");
   btnEliminar.addEventListener("click", eliminarFila);
-  let inputs = document.querySelectorAll("input");
+  inputs = document.querySelectorAll("input");
   inputs.forEach((input) => {
     input.addEventListener("blur", (e) => {
-      console.log(e.target);
-      if (e.target.value == "") {
-        alert(`Debes completar el campo ${e.target.name}`);
-      }
+      validarVacio(e);
     });
   });
 });
@@ -26,10 +24,11 @@ function obtenerValores() {
   txtNombre = document.getElementById("nombre");
   txtPuntuacion = document.getElementById("puntuacion");
   txtPais = document.getElementById("pais");
+  inputs = document.querySelectorAll("input");
 }
 
 function anadirFila() {
-  validado = validar();
+  let validado = validar();
   if (validado) {
     obtenerValores();
     let tr = document.createElement("tr");
@@ -69,5 +68,31 @@ function borrarFormulario() {
 function validar() {
   obtenerValores();
   let validado = false;
-  validarCampos();
+  let campos = validarCampos();
+  if (campos) {
+    let validNombre = validarTexto(txtNombre);
+  }
 }
+
+function validarVacio(e) {
+  if (e.target.value == "") {
+    alert(`Debes completar el campo ${e.target.name}`);
+  }
+}
+
+function validarCampos() {
+  obtenerValores();
+  let alguno = 0;
+  inputs.forEach((input) => {
+    if (input.value == "") {
+      alguno++;
+    }
+    if (alguno > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+}
+
+function validarTexto() {}
