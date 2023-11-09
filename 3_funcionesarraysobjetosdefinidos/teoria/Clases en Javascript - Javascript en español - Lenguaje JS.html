@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://lenguajejs.com/javascript/oop/clases/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ecc022">
+  <link rel="shortcut icon" href="https://lenguajejs.com/favicon.ico">
+  <title>Clases en Javascript - Javascript en español - Lenguaje JS</title>
+  <link rel="preload" href="https://lenguajejs.com/assets/fonts/jost-vf.woff2" as="font" crossorigin="">
+  <meta name="description" content="Las clases son una estructura de datos para agrupar variables y funciones en un elemento padre relacionado.">
+  <meta name="view-transition" content="same-origin">
+  <link rel="stylesheet" href="./Clases en Javascript - Javascript en español - Lenguaje JS_files/home.css">
+  <script type="module" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/index.js.descarga"></script>
+<link rel="canonical" href="https://lenguajejs.com/javascript/oop/clases/">
+  <meta property="og:title" content="Clases en Javascript - Javascript en español">
+  <meta property="og:image" content="https://lenguajejs.com/javascript/large-summary.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="Las clases son una estructura de datos para agrupar variables y funciones en un elemento padre relacionado.">
+  <meta property="og:url" content="https://lenguajejs.com/javascript/oop/clases/">
+  <meta property="twitter:url" content="https://lenguajejs.com/javascript/oop/clases/">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:creator" content="@Manz">
+  <meta property="twitter:title" content="Clases en Javascript - Javascript en español">
+  <meta property="twitter:description" content="Las clases son una estructura de datos para agrupar variables y funciones en un elemento padre relacionado.">
+  <meta property="twitter:image" content="https://lenguajejs.com/javascript/large-summary.jpg">
+
+  </head>
+
+<body class="js menu-open " style="--logo-color: #f0db4f"><script>
+    matchMedia("(width <= 1180px)").matches && document.body.classList.toggle("menu-open");
+  </script>
+  
+
+
+
+
+
+
+
+
+<section class="menubar">
+  <div class="menubar-content">
+    <h1>Lenguaje JS</h1>
+
+    <a class="cover" title="Lenguaje JS (javascript)" href="https://lenguajejs.com/javascript/" style="--image: url(&#39;/assets/javascript.jpg&#39;)"></a>
+
+    <header>
+      <a href="https://lenguajejs.com/javascript/modulos/que-es-esm/" title="¿Qué son los módulos (ESM)?">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="#888888" d="m14 26l1.41-1.41L7.83 17H28v-2H7.83l7.58-7.59L14 6L4 16l10 10z"></path></svg>
+      </a>
+      <a href="https://lenguajejs.com/javascript/" title="Volver al índice">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#888888" d="M240 210h-18v-94.45a14.06 14.06 0 0 0-4.53-10.32l-80-75.49l-.09-.08a13.94 13.94 0 0 0-18.83 0l-.09.08l-80 75.5A14 14 0 0 0 34 115.55V210H16a6 6 0 0 0 0 12h224a6 6 0 0 0 0-12ZM46 115.55a2 2 0 0 1 .65-1.48l.09-.08l79.94-75.48a2 2 0 0 1 2.63 0L209.26 114l.08.08a2 2 0 0 1 .66 1.48V210h-52v-50a14 14 0 0 0-14-14h-32a14 14 0 0 0-14 14v50H46ZM146 210h-36v-50a2 2 0 0 1 2-2h32a2 2 0 0 1 2 2Z"></path></svg>
+      </a>
+      <a href="https://lenguajejs.com/javascript/dom/que-es/" title="¿Qué es el DOM?">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="#888888" d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"></path></svg>
+      </a>
+    </header>
+
+    <div style="display:none">
+      <svg id="link-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><g fill="#888888"><path d="M208 88h-56V32Z" opacity=".2"></path><path d="m213.66 82.34l-56-56A8 8 0 0 0 152 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V88a8 8 0 0 0-2.34-5.66ZM160 51.31L188.69 80H160ZM200 216H56V40h88v48a8 8 0 0 0 8 8h48v120Z"></path></g></svg>
+      <svg id="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#888888" d="M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5a2.5 2.5 0 0 1 0-5H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z"></path></svg>
+    </div>
+
+    <div class="links">
+      <span class="folder">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path fill="#888888" d="M41 73v304.563L88.697 151H423v-30H185.514l-16-48H41zm62.303 96L43.092 455h381.605l60.211-286H103.303z"></path></svg>
+        Orientación a objetos (OOP)
+      </span>
+            <a class="link" href="https://lenguajejs.com/javascript/oop/que-es/">
+              <svg viewBox="0 0 32 32"><use href="#link-icon"></use></svg>
+              Orientación a objetos
+            </a>
+            <a class="link active" href="https://lenguajejs.com/javascript/oop/clases/">
+              <svg viewBox="0 0 32 32"><use href="#link-icon"></use></svg>
+              Clases en Javascript
+            </a><a class="anchor" href="https://lenguajejs.com/javascript/oop/clases/#qu%C3%A9-es-una-clase"><svg viewBox="0 0 24 24"><use href="#anchor-icon"></use></svg> ¿Qué es una Clase?</a><a class="anchor" href="https://lenguajejs.com/javascript/oop/clases/#miembros-de-una-clase"><svg viewBox="0 0 24 24"><use href="#anchor-icon"></use></svg> Miembros de una clase</a><a class="anchor" href="https://lenguajejs.com/javascript/oop/clases/#la-palabra-clave-this"><svg viewBox="0 0 24 24"><use href="#anchor-icon"></use></svg> La palabra clave this</a><a class="anchor" href="https://lenguajejs.com/javascript/oop/clases/#buenas-pr%C3%A1cticas"><svg viewBox="0 0 24 24"><use href="#anchor-icon"></use></svg> Buenas prácticas</a>
+            <a class="link" href="https://lenguajejs.com/javascript/oop/propiedades-clase/">
+              <svg viewBox="0 0 32 32"><use href="#link-icon"></use></svg>
+              Propiedades de clase
+            </a>
+            <a class="link" href="https://lenguajejs.com/javascript/oop/metodos-clase/">
+              <svg viewBox="0 0 32 32"><use href="#link-icon"></use></svg>
+              Métodos de clase
+            </a>
+            <a class="link" href="https://lenguajejs.com/javascript/oop/herencia-clases/">
+              <svg viewBox="0 0 32 32"><use href="#link-icon"></use></svg>
+              Herencia de Clases
+            </a>
+    </div>
+  </div>
+
+  <div class="sidebox">
+    <svg class="close-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="#888888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19V5m10 1l-6 6l6 6m-6-6h14"></path></svg>
+    <div class="socials">
+      <a class="twitch" href="https://twitch.tv/ManzDev" title="Twitch"><svg><use href="/assets/icons/social.svg#twitch"></use></svg></a>
+      <a href="https://youtube.com/@ManzDev" title="YouTube"><svg><use href="/assets/icons/social.svg#youtube"></use></svg></a>
+      <a href="https://tiktok.com/@manz.dev" title="TikTok"><svg><use href="/assets/icons/social.svg#tiktok"></use></svg></a>
+      <a href="https://instagram.com/manz.dev" title="Instagram"><svg><use href="/assets/icons/social.svg#instagram"></use></svg></a>
+      <a href="https://twitter.com/manz" title="Twitter"><svg><use href="/assets/icons/social.svg#twitter"></use></svg></a>
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  const toggleMenu = () => (document.body.classList.toggle("menu-open"));
+  document.querySelector(".close-menu").addEventListener("click", toggleMenu);
+
+  matchMedia("(width <= 1180px)").addEventListener("change", (ev) => ev.matches && toggleMenu());
+  matchMedia("(width > 1180px)").addEventListener("change", (ev) => ev.matches && toggleMenu());
+
+  const activeLink = document.querySelector(".links .active");
+  const icon = /* svg */`<svg viewBox="0 0 24 24"><use href="#anchor-icon" /></svg>`;
+  const headers = [...document.querySelectorAll(".contents h3")].map(link => ({ text: link.textContent, id: link.id }));
+  const links = [];
+  headers.reverse().forEach(({ text, id }) => {
+    const link = document.createElement("a");
+    link.classList.add("anchor");
+    link.href = "#" + id;
+    link.insertAdjacentHTML("beforeend", icon);
+    link.insertAdjacentText("beforeend", ` ${text}`);
+    activeLink.after(link);
+  });
+</script>
+
+  <div class="post page">
+    <header class="hero">
+
+  <div class="top-search">
+    <a class="sitelogo" href="https://lenguajejs.com/">
+  <svg><use href="/assets/logos.svg#js"></use></svg>
+  <img class="manzdev" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/manzdev-logo.webp" alt="ManzDev">
+  <div class="sitelogo-text">
+    <div class="text">MANZ.DEV</div>
+    <div class="subtext">LenguajeJS.com</div>
+  </div>
+</a>
+
+    <search class="search-container">
+  <form class="search" action="https://www.google.com/search">
+    <label>
+      <input type="search" name="q" placeholder="flex, grid..." autocomplete="off" spellcheck="false">
+      <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="0 0 256 256"><path fill="var(--color, #fff)" d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
+    </label>
+    <input type="hidden" name="q" value="site:lenguajejs.com OR site:lenguajecss.com OR site:lenguajehtml.com OR site:terminaldelinux.com OR site:manz.dev">
+    <div class="results"></div>
+    <div class="sources">
+      <label><input type="radio" name="source" value="posts" checked=""> Posts</label>
+      <label><input type="radio" name="source" value="youtube"> Youtube</label>
+    </div>
+  </form>
+
+  <script type="module">
+    import { debounce } from "/modules.js";
+    import { searchText } from "/modules.js";
+
+    const searchInput = document.querySelector("form.search input[type=search]");
+    searchInput.addEventListener("input", debounce(searchText, 400));
+  </script>
+</search>
+
+  </div>
+
+  <div class="mega" style="--cover-image: url(&#39;/assets/javascript.jpg&#39;)">
+    <h1><a href="https://lenguajejs.com/javascript/oop/clases/">Clases en Javascript</a></h1><h2 class="typewriter" style="visibility: visible;">Estructura de datos para crear objetos<span class="cursor" style="visibility: hidden;">|</span></h2>
+    <hr></div>
+
+  
+
+<nav class="navpages">
+  <div class="top">
+    
+    <a href="https://lenguajejs.com/javascript/" title="Volver al índice"></a>
+  </div>
+  <div class="prev-next">
+    <a href="https://lenguajejs.com/javascript/oop/que-es/">Orientación a objetos</a>
+    <a class="current" href="https://lenguajejs.com/javascript/oop/clases/">Clases en Javascript</a>
+    <a href="https://lenguajejs.com/javascript/oop/propiedades-clase/">Propiedades de clase</a>
+    </div>
+</nav>
+<div class="mini-social">
+  ——
+  <a href="https://twitch.tv/ManzDev" title="Twitch"><svg><use href="/assets/icons/social.svg#twitch"></use></svg></a>
+  <a href="https://youtube.com/@ManzDev" title="YouTube"><svg><use href="/assets/icons/social.svg#youtube"></use></svg></a>
+  <a href="https://tiktok.com/@manz.dev" title="TikTok"><svg><use href="/assets/icons/social.svg#tiktok"></use></svg></a>
+  <a href="https://instagram.com/manz.dev" title="Instagram"><svg><use href="/assets/icons/social.svg#instagram"></use></svg></a>
+  <a href="https://twitter.com/manz" title="Twitter"><svg><use href="/assets/icons/social.svg#twitter"></use></svg></a>
+  ——
+</div>
+
+
+
+</header>
+
+<script type="module">
+  import { typewriter } from "/modules.js";
+
+  typewriter("header.hero h2.typewriter");
+</script>
+
+
+
+    <div class="post-container">
+  <div class="contents">
+    
+    <p>Una vez dominamos las bases de la programación y nuestro código va creciendo cada vez más, comprobaremos que las <strong>variables y funciones</strong> no suelen ser suficiente como para que nuestro código esté <strong>bien organizado</strong> y los mecanismos que tenemos a nuestro alcance quizás no resultan todo lo prácticos que deberían ser.</p>
+<p>Tradicionalmente, Javascript no soportaba clases de forma nativa, pero en <strong>ECMAScript 2015</strong> <badge-es class="es2015"></badge-es> se introdujo la posibilidad de usar clases simulando como se utilizan en otros lenguajes de programación. Internamente, Javascript traduce estas clases al sistema basado en prototipos que usa en realidad, sin embargo, los programadores no necesitarán saber como funcionan los prototipos, sino que les bastará con utilizar las clases a modo de <strong>azúcar sintáctico</strong>, es decir, un sistema que «endulza» la forma de trabajar para que sea más agradable y familiar.</p>
+<h3 id="qué-es-una-clase" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#qu%C3%A9-es-una-clase">¿Qué es una Clase?</a></h3>
+<p>Como mencionamos en el apartado anterior, una <strong>clase</strong> sólo es una forma de organizar código de forma entendible con el objetivo de simplificar el funcionamiento de nuestro programa. Además, hay que tener en cuenta que las clases son «conceptos abstractos» de los que se pueden crear objetos de programación, cada uno con sus características concretas.</p>
+<p>Esto puede ser complicado de entender con palabras, pero se ve muy claro con ejemplos:</p>
+<p><img src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/clases-objetos.png" alt="Clases y objetos" width="2133" height="938" loading="lazy"></p>
+<p>En primer lugar tenemos la <strong>clase</strong>. La clase es el <strong>concepto abstracto</strong> de un objeto, mientras que el <strong>objeto</strong> es el elemento final que se basa en la clase. En la imagen anterior tenemos varios ejemplos:</p>
+<ul>
+<li>
+<p>En el <strong>primer ejemplo</strong> tenemos dos objetos: <code>pato</code> y <code>ratón</code>. Ambos son animales, por lo que son objetos que están basados en la clase <code>Animal</code>. Tanto <code>pato</code> como <code>ratón</code> tienen las características que estarán definidas en la clase <code>Animal</code>: color, sonido que emiten, nombre, etc...</p>
+</li>
+<li>
+<p>En el <strong>segundo ejemplo</strong> tenemos dos objetos <code>seat</code> y <code>opel</code>. Se trata de dos coches, que son vehículos, puesto que están basados en la clase <code>Vehículo</code>. Cada uno tendrá las características de su clase: color del vehículo, número de ruedas, marca, modelo, etc...</p>
+</li>
+<li>
+<p>En el <strong>tercer ejemplo</strong> tenemos dos objetos <code>cuadrado</code> y <code>c2</code>. Se trata de dos formas geométricas, que al igual que los ejemplos anteriores tendrán sus propias características, como por ejemplo el tamaño de sus lados. El elemento <code>cuadrado</code> puede tener un lado de <code>3</code> cm y el elemento <code>c2</code> puede tener un lado de <code>6</code> cm.</p>
+</li>
+</ul>
+<h4 id="instanciar-una-clase" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#instanciar-una-clase">Instanciar una clase</a></h4>
+<p>Se le llama <strong>instanciar una clase</strong>, <strong>crear un objeto</strong> o <strong>crear una instancia</strong> a la acción de crear un nuevo objeto basado en una clase particular. Esta acción la realizamos a través de la palabra clave <code>new</code>, seguida del nombre de la clase, la cuál puede tener parámetros, en cuyo caso se controlarían desde un <code>constructor</code>, concepto que veremos más adelante.</p>
+<p>En Javascript, para instancia una clase, se utiliza una sintaxis muy similar a otros lenguajes como, por ejemplo, Java. Es tan sencillo como escribir lo siguiente:</p>
+<code-wrapper><div class="tabs"><div class="tab js active">js</div></div><pre class="language-js block active"><code class="language-js"><span class="token comment">// Declaración de una clase (de momento, vacía)</span>
+<span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// Crear (instanciar) un objeto basada en una clase</span>
+<span class="token keyword">const</span> pato <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><div class="code-buttons"><button class="btn copy"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M7 18V2h13v16H7Zm-4 4V6h2v14h11v2H3Z"></path></svg></button><button class="btn refresh"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M12 20q-3.35 0-5.675-2.325T4 12q0-3.35 2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.188-2.2T12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20Z"></path></svg></button></div></code-wrapper>
+<p>El nombre elegido debería hacer referencia a la información que va a contener dicha clase. Piensa que el objetivo de las clases es almacenar en ella todo lo que tenga relación (<em>en este ejemplo, con los animales</em>). Si te fijas, es lo que venimos haciendo hasta ahora con objetos como <badge-type class="regexp"></badge-type>, <badge-type class="date"></badge-type>, <badge-type class="array"></badge-type> u otros.</p>
+<p>Observa que luego creamos una variable donde hacemos un <code>new Animal()</code>. Estamos creando un objeto <code>pato</code> que es de tipo <code>Animal</code>, y que contendrá todas las características definidas dentro de la clase <code>Animal</code> (<em>de momento, vacía</em>).</p>
+<blockquote>
+<p>Una norma de estilo en el mundo de la programación es que las <strong>clases</strong> deben siempre <strong>empezar en mayúsculas</strong> (<em>nomenclatura llamada PascalCase</em>). Esto nos ayudará a diferenciarlas sólo con leerlas. Si te interesa este tema, puedes echar un vistazo al tema de las <a href="https://lenguajejs.com/javascript/introduccion/convenciones-de-nombres">convenciones de nombres en programación</a>.</p>
+</blockquote>
+<h3 id="miembros-de-una-clase" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#miembros-de-una-clase">Miembros de una clase</a></h3>
+<p>Una clase tiene diferentes <strong>características</strong> que la forman, que generalmente se denominan <strong>miembros</strong>, y que normalmente son de dos tipos: <strong>propiedades</strong> y <strong>métodos</strong>. Vamos a ir explicándolas detalladamente. Pero primero, una tabla general para verlas en conjunto, con sus tipos:</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Descripción</th>
+<th>Más información</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Propiedad</strong></td>
+<td>Variable que existe dentro de una clase. Puede ser pública o privada.</td>
+<td><a href="https://lenguajejs.com/javascript/oop/propiedades-clase/">Ver propiedades</a></td>
+</tr>
+<tr>
+<td><code>Propiedad pública</code></td>
+<td colspan="2">Propiedad a la que se puede acceder desde fuera de la clase.</td>
+</tr>
+<tr>
+<td><code>Propiedad privada</code> <badge-es class="es2020"></badge-es></td>
+<td colspan="2">Propiedad a la que no se puede acceder desde fuera de la clase.</td>
+</tr>
+<tr>
+<td><code>Propiedad computada</code></td>
+<td colspan="2">Función para acceder a una propiedad con modificaciones (getter/setter).</td>
+</tr>
+<tr>
+<td><strong>Método</strong></td>
+<td>Función que existe dentro de una clase. Puede ser pública o privada.</td>
+<td><a href="https://lenguajejs.com/javascript/oop/metodos-clase/">Ver métodos</a></td>
+</tr>
+<tr>
+<td><code>Método público</code></td>
+<td colspan="2">Método que se puede ejecutar desde dentro y fuera de la clase.</td>
+</tr>
+<tr>
+<td><code>Método privado</code> <badge-es class="es2020"></badge-es></td>
+<td colspan="2">Método que sólo se puede ejecutar desde dentro de la clase.</td>
+</tr>
+<tr>
+<td><code>Constructor</code></td>
+<td colspan="2">Método especial que se ejecuta automáticamente cuando se crea una instancia.</td>
+</tr>
+<tr>
+<td><code>Método estático</code></td>
+<td colspan="2">Método que se ejecuta directamente desde la clase, no desde la instancia.</td>
+</tr>
+<tr>
+<td><code>Inicializador estático</code> <badge-es class="es2022"></badge-es></td>
+<td colspan="2">Bloque de código que se ejecuta al definir la clase, sin necesidad de instancia.</td>
+</tr>
+</tbody>
+</table>
+<p>Como vemos, todos estas características se dividen en dos grupos:</p>
+<ul>
+<li>Las <strong>propiedades</strong>: a grandes rasgos, variables dentro de clases</li>
+<li>Los <strong>métodos</strong>: a grandes rasgos, funciones dentro de clases</li>
+</ul>
+<p>Un ejemplo sencillo de cada uno:</p>
+<code-wrapper><div class="tabs"><div class="tab js active">js</div></div><pre class="language-js block active"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Propiedades</span>
+  name <span class="token operator">=</span> <span class="token string">"Garfield"</span><span class="token punctuation">;</span>
+  type <span class="token operator">=</span> <span class="token string">"cat"</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Métodos</span>
+  <span class="token function">hablar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"Odio los lunes."</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><div class="code-buttons"><button class="btn copy"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M7 18V2h13v16H7Zm-4 4V6h2v14h11v2H3Z"></path></svg></button><button class="btn refresh"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M12 20q-3.35 0-5.675-2.325T4 12q0-3.35 2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.188-2.2T12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20Z"></path></svg></button></div></code-wrapper>
+<p>En los siguientes capítulos veremos que son exactamente, como se utilizan y que tipos de propiedades y métodos diferentes existen dentro del mundo de la programación orientada a objetos y sus clases.</p>
+<h3 id="la-palabra-clave-this" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#la-palabra-clave-this">La palabra clave this</a></h3>
+<p>Más adelante utilizaremos mucho la palabra clave <code>this</code>. Esta es una palabra clave que se utiliza mucho dentro de las clases para hacer referencia al objeto instanciado. Ojo, que hace referencia al <strong>objeto instanciado</strong> y no a la clase:</p>
+<code-wrapper><div class="tabs"><div class="tab js active">js</div></div><pre class="language-js block active"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">;</span>                 <span class="token comment">// Propiedad (variable de clase sin valor definido)</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>   <span class="token comment">// Hacemos referencia a la propiedad name del objeto instanciado</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><div class="code-buttons"><button class="btn copy"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M7 18V2h13v16H7Zm-4 4V6h2v14h11v2H3Z"></path></svg></button><button class="btn refresh"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M12 20q-3.35 0-5.675-2.325T4 12q0-3.35 2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.188-2.2T12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20Z"></path></svg></button></div></code-wrapper>
+<p>Observa que la palabra clave <code>this</code> no se refiere a la clase <code>Animal</code> exactamente, sino a la variable que utilizamos al instanciarla. Es decir, si hacemos un <code>const pato = new Animal()</code>, se ejecutaría el constructor y la palabra clave <code>this</code> haría referencia a <code>pato</code>, por lo que <code>this.name</code> estaría haciendo referencia a <code>pato.name</code>.</p>
+<p>Es importante tener mucho cuidado con la palabra clave <code>this</code>, ya que en muchas situaciones creemos que devuelve una referencia al elemento padre que la contiene, pero en su lugar, devolverá el objeto <code>Window</code>, ya que se encuentra fuera de una clase o dentro de una función con otro contexto:</p>
+<code-wrapper><div class="tabs"><div class="tab js active">js</div></div><pre class="language-js block active"><code class="language-js"><span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// Window</span>
+<span class="token keyword">const</span> object <span class="token operator">=</span> <span class="token punctuation">{</span> hello <span class="token punctuation">}</span>      <span class="token comment">// Metemos la función dentro del objeto</span>
+object<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> object<span class="token punctuation">;</span>    <span class="token comment">// true</span></code></pre><div class="code-buttons"><button class="btn copy"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M7 18V2h13v16H7Zm-4 4V6h2v14h11v2H3Z"></path></svg></button><button class="btn refresh"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M12 20q-3.35 0-5.675-2.325T4 12q0-3.35 2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.188-2.2T12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20Z"></path></svg></button></div></code-wrapper>
+<p>En este caso, podemos ver que si ejecutamos la función <code>hello()</code> en un contexto global, nos devuelve el padre, es decir, el objeto <code>Window</code>. Sin embargo, si metemos la función <code>hello()</code> dentro de un objeto <badge-type class="object"></badge-type>, al ejecutar <code>object.hello()</code> nos devuelve el padre, es decir, el propio objeto <code>object</code>.</p>
+<blockquote>
+<p>Ten cuidado al utilizar <code>this</code>. Asegúrate siempre de que <code>this</code> tiene el valor que realmente crees que tiene.</p>
+</blockquote>
+<h3 id="buenas-prácticas" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#buenas-pr%C3%A1cticas">Buenas prácticas</a></h3>
+<p>Veamos una serie de buenas prácticas a la hora de trabajar con clases, antes de profundizar en sus características.</p>
+<h4 id="clases-en-ficheros-externos" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#clases-en-ficheros-externos">Clases en ficheros externos</a></h4>
+<p>Generalmente, para tener el código lo más organizado posible, las clases se suelen almacenar en ficheros individuales, de forma que cada clase que creamos, debería estar en un fichero con su mismo nombre:</p>
+<code-wrapper><div class="tabs"><div class="tab js active">js</div></div><pre class="language-js block active"><code class="language-js"><span class="token comment">// Animal.js</span>
+
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* Contenido de la clase */</span>
+<span class="token punctuation">}</span></code></pre><div class="code-buttons"><button class="btn copy"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M7 18V2h13v16H7Zm-4 4V6h2v14h11v2H3Z"></path></svg></button><button class="btn refresh"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M12 20q-3.35 0-5.675-2.325T4 12q0-3.35 2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.188-2.2T12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20Z"></path></svg></button></div></code-wrapper>
+<p>Luego, si queremos crear objetos basados en esta clase, lo habitual suele ser importar el fichero de la clase en cuestión y crear el objeto a partir de la clase. Algo similar al siguiente fragmento de código:</p>
+<code-wrapper><div class="tabs"><div class="tab js active">js</div></div><pre class="language-js block active"><code class="language-js"><span class="token comment">// index.js</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Animal <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./Animal.js"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pato <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><div class="code-buttons"><button class="btn copy"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M7 18V2h13v16H7Zm-4 4V6h2v14h11v2H3Z"></path></svg></button><button class="btn refresh"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M12 20q-3.35 0-5.675-2.325T4 12q0-3.35 2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.188-2.2T12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20Z"></path></svg></button></div></code-wrapper>
+<p>Si nuestra aplicación se complica mucho, podríamos comenzar a crear carpetas para organizar mejor aún nuestros ficheros de clases, y por ejemplo, tener la clase <code>Animal.js</code> dentro de una carpeta <code>classes</code> (<em>o algo similar</em>). Esto nos brindaría una mejor experiencia de desarrollo, pero el nombre de las carpetas o su organización ya dependería del desarrollador o del equipo de desarrollo.</p>
+<h4 id="nombrado-de-miembros" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#nombrado-de-miembros">Nombrado de miembros</a></h4>
+<p>En los próximos capítulos ya profundizaremos en las propiedades y los métodos de una clase, pero una buena práctica para no confundirnos a la hora de utilizarlos, es a la hora de ponerles nombres. Es muy aconsejable que las <strong>propiedades de una clase</strong> tengan nombre de <strong>sustantivos</strong> (<em>son elementos, valores, ítems...</em>), mientras que los <strong>métodos de una clase</strong> deberían tener nombre de <strong>verbos</strong> (<em>son acciones, operaciones, etc...</em>).</p>
+<p>Otro buen consejo, mucho más general, es que intentes escribir código en inglés, ya que eso hará que el código que hagas sea mucho más universal, y sea más fácil de modificar por otras personas.</p>
+<h4 id="clases-con-pocas-líneas" tabindex="-1"><a class="header-anchor" href="https://lenguajejs.com/javascript/oop/clases/#clases-con-pocas-l%C3%ADneas">Clases con pocas líneas</a></h4>
+<p>Otro consejo interesante a la hora de trabajar con clases sería intentar que las clases se mantengan pequeñas, con <strong>pocas líneas de código</strong>. El número de líneas de código ideal es difícil de saber, pero un buen número, por ejemplo, podría ser entre 100-500 líneas de código, como menciona la regla <a href="https://eslint.org/docs/latest/rules/max-lines">max-lines</a> de la herramienta de revisión de código <a href="https://lenguajejs.com/javascript/caracteristicas/eslint/">ESLint</a>.</p>
+<p>Si descuidamos la cantidad de <strong>líneas de código por fichero</strong> al programar, es muy probable que con el tiempo la clase (<em>o el fichero</em>) vaya creciendo en líneas y se vuelva muy dificil de mantener y modificar.</p>
+<p>Para evitar esto, lo ideal siempre es mantener, siempre que sea posible, un número bajo de líneas de código, y si la clase se está haciendo muy grande, intentar dividirla en varias clases. Es decir, buscar una serie de criterios para poder <strong>refactorizar</strong> y separar ciertos detalles en una nueva clase:</p>
+<code-wrapper><div class="tabs"><div class="tab bash active">bash</div></div><pre class="language-bash block active"><code class="language-bash">Personaje.js                        Personaje.js                  Vida.js
+-------------                       -------------                 --------
+
+- Vidas restantes <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span>       - Vida <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span> -------<span class="token operator">&gt;</span>   - Vidas restantes <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span>
+- Fuerza <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span>                - Fuerza <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span>          - Energía <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span>
+- Energía <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span>               - Hablar <span class="token punctuation">(</span>método<span class="token punctuation">)</span>             - Curar <span class="token punctuation">(</span>método<span class="token punctuation">)</span>
+- Velocidad <span class="token punctuation">(</span>propiedad<span class="token punctuation">)</span>             - Disparar <span class="token punctuation">(</span>método<span class="token punctuation">)</span>
+- Hablar <span class="token punctuation">(</span>método<span class="token punctuation">)</span>
+- Disparar <span class="token punctuation">(</span>método<span class="token punctuation">)</span>
+- Curar <span class="token punctuation">(</span>método<span class="token punctuation">)</span></code></pre><div class="code-buttons"><button class="btn copy"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M7 18V2h13v16H7Zm-4 4V6h2v14h11v2H3Z"></path></svg></button><button class="btn refresh"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M12 20q-3.35 0-5.675-2.325T4 12q0-3.35 2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.188-2.2T12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20Z"></path></svg></button></div></code-wrapper>
+<p>En este ejemplo, hemos separado en una nueva clase <code>Vida</code> en el fichero <code>Vida.js</code>, los conceptos <code>Vidas restantes</code>, <code>Energía</code> y <code>Curar</code> ya que tienen relación entre sí (<em>hacen referencia a la vida del personaje</em>), de modo que ahora en la clase <code>Personaje</code> simplemente tenemos una propiedad que hace referencia a un objeto de esa clase <code>Vida</code>, con sus valores particulares.</p>
+<p>Esto hará que, si el fichero <code>Personaje.js</code> ocupaba demasiadas líneas, consigamos reducirlas, puesto que hemos movido parte de su código a otro fichero, y de paso hemos mejorado mucho nuestro código, ya que ahora está separado en temas más específicos, que son más pequeños y más fáciles de controlar.</p>
+
+  </div>
+</div>
+
+<script>
+  const keystrokes = [...document.querySelectorAll(".post .contents kbd")];
+  const hasKeys = keystrokes.length > 0;
+  let keySound;
+  keystrokes.forEach(key => key.addEventListener("click", () => {
+    if (hasKeys && !keySound) {
+      keySound = new Audio("/assets/sounds/kbd.ogg");
+    }
+    keySound.currentTime = 0;
+    keySound.play();
+  }));
+</script>
+
+    
+    <div id="comentarios" class="buttons">
+  <div class="wrapper">
+    <a class="btn" href="https://lenguajejs.com/javascript/">
+      <svg viewBox="0 0 512 512">
+        <path d="M100 97a37 37 0 0 1 0-54c7-7 16-11 27-11h312V0H127C88 0 57 31 57 70v372c0 39 31 70 70 70h328V108H127c-11 0-20-5-27-11zm65 43h258v340H165V140z"></path>
+        <path d="M144 56a14 14 0 0 0 0 28h311V56H144z"></path>
+      </svg>
+      <div>
+        <span>Volver</span>
+        <small>Al índice</small>
+      </div>
+    </a>
+    <a class="btn prev" href="https://lenguajejs.com/javascript/oop/que-es/" title="Orientación a objetos">
+  <svg viewBox="0 0 24 24">
+    <path fill="currentColor" d="m12 20l-8-8l8-8l1.425 1.4l-5.6 5.6H20v2H7.825l5.6 5.6L12 20Z"></path>
+  </svg>
+  <div>
+    <span>Orientación a objetos</span>
+    <small>Capítulo anterior</small>
+  </div>
+</a>
+    <a class="btn next" href="https://lenguajejs.com/javascript/oop/propiedades-clase/" title="Propiedades de clase">
+  <div>
+    <span>Propiedades de clase</span>
+    <small>Capítulo siguiente</small>
+  </div>
+  <svg viewBox="0 0 24 24">
+    <path fill="currentColor" d="m12 20l-1.425-1.4l5.6-5.6H4v-2h12.175l-5.6-5.6L12 4l8 8l-8 8Z"></path>
+  </svg>
+</a>
+    <a class="btn" href="https://discord.manz.dev/">
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor" stroke-width="0" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"></path>
+      </svg>
+      <div>
+        <span>Acceder a Discord</span>
+        <small>Comunidad de Manz.dev</small>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+<section class="bg dark related">
+  <div class="wrapper column">
+    <h2>Relacionados</h2>
+    <p>En mi canal de <a href="https://youtube.com/@ManzDev?sub_confirmation=1">Youtube</a>, tienes varios videos que podrían interesarte...</p>
+
+    <div class="list"><a href="https://youtu.be/Xi07tHFzqR8" title="Cómo CLONAR objetos en Javascript correctamente (structuredClone)">
+  <img loading="lazy" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/mqdefault.jpg" alt="Cómo CLONAR objetos en Javascript correctamente (structuredClone)">
+</a><a href="https://youtu.be/sU4e6_i_ExU" title="Consejos y buenas prácticas (IV): Javascript + Imágenes">
+  <img loading="lazy" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/mqdefault(1).jpg" alt="Consejos y buenas prácticas (IV): Javascript + Imágenes">
+</a><a href="https://youtu.be/UVauEId-jJ0" title="¡Crea código HTML REUTILIZABLE con la etiqueta TEMPLATE! ¡Sin librerías!">
+  <img loading="lazy" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/mqdefault(2).jpg" alt="¡Crea código HTML REUTILIZABLE con la etiqueta TEMPLATE! ¡Sin librerías!">
+</a><a href="https://youtu.be/KE2xRDM4Amg" title="¡Crea tus PROPIAS ETIQUETAS HTML sin FRAMEWORKS!">
+  <img loading="lazy" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/mqdefault(3).jpg" alt="¡Crea tus PROPIAS ETIQUETAS HTML sin FRAMEWORKS!">
+</a><a href="https://youtu.be/EiKYr5vjs48" title="Diferencias entre getElementById vs querySelector (y otros métodos del DOM)">
+  <img loading="lazy" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/mqdefault(4).jpg" alt="Diferencias entre getElementById vs querySelector (y otros métodos del DOM)">
+</a><a href="https://youtu.be/S0YA8BadVbM" title="Cambiar clases CSS desde Javascript con classList">
+  <img loading="lazy" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/mqdefault(5).jpg" alt="Cambiar clases CSS desde Javascript con classList">
+</a></div>
+  </div>
+</section>
+
+    
+
+<section class="featured">
+
+  <div class="wrapper column">
+    <h2>Aprender más</h2>
+    <p>Si lo prefieres, puedes aprender también sobre estas temáticas:</p>
+
+    <div class="list"><a class="topic" href="https://lenguajehtml.com/html/" title="HTML5">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#html"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajehtml.com/svg/" title="SVG">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#svg"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajecss.com/css/" title="CSS">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#css"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajecss.com/postcss/" title="PostCSS">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#postcss"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajejs.com/fundamentos/" title="Fundamentos">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#blueprint"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajejs.com/javascript/" title="Javascript">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#js"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajejs.com/npm/" title="NPM">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#npm"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajejs.com/webcomponents/" title="WebComponents">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#webcomponents"></use>
+  </svg>
+</a><a class="topic" href="https://terminaldelinux.com/terminal/" title="Terminal">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#terminal"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajejs.com/vuejs/" title="VueJS">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#vuejs"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajejs.com/automatizadores/" title="Automatizadores">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#bundler"></use>
+  </svg>
+</a><a class="topic" href="https://lenguajejs.com/retos/" title="Retos">
+  <svg class="logo">
+    <use href="/assets/icons/logos.svg#retos"></use>
+  </svg>
+</a></div>
+  </div>
+
+</section>
+
+    <section class="about">
+  <div class="wrapper column">
+    <h2>¿Quién soy yo?</h2>
+
+    <div class="about-container">
+      <div class="avatar"></div>
+      <div>
+        <p>Soy Manz, vivo en Tenerife (España) y soy streamer partner en Twitch <svg width="20" height="20" viewBox="0 0 20 20">
+          <path fill="#a970ff" d="M10 2l6 2 2 6-2 6-6 2-6-2-2-6 2-6 6-2zM8.889 13.636l5.43-5.429-1.415-1.414-4.015 4.015-2.015-2.015-1.414 1.414 3.429 3.43z"></path>
+          </svg> y profesor. Me apasiona el universo de la programación web, el diseño y desarrollo web y la tecnología en general.
+          Aunque soy full-stack, mi pasión es el front-end, la terminal y crear cosas divertidas y locas.
+        </p>
+      </div>
+    </div>
+    <p>Puedes encontrar más sobre mi en <a href="https://manz.dev/">Manz.dev</a></p>
+  </div>
+</section>
+
+<script>
+  const avatar = document.querySelector(".about .avatar");
+  let honk;
+  avatar.addEventListener("mousedown", () => {
+    if (!honk)
+      honk = new Audio("/assets/sounds/toy.ogg");
+    honk.currentTime = 0;
+    honk.play();
+  });
+</script>
+
+    
+
+<footer class="main">
+
+  <div class="wrapper">
+    <div class="social">
+
+      <div class="group">
+        <a class="btn" href="https://twitch.tv/ManzDev">
+  <svg>
+    <use href="/assets/icons/social.svg#twitch"></use>
+  </svg>
+  <span>Twitch</span>
+</a>
+        <a class="btn" href="https://youtube.com/@ManzDev?sub_confirmation=1">
+  <svg>
+    <use href="/assets/icons/social.svg#youtube"></use>
+  </svg>
+  <span>Youtube</span>
+</a>
+        <a class="btn" href="https://twitter.com/Manz">
+  <svg>
+    <use href="/assets/icons/social.svg#twitter"></use>
+  </svg>
+  <span>Twitter</span>
+</a>
+        <a class="btn" href="https://instagram.com/manz.dev">
+  <svg>
+    <use href="/assets/icons/social.svg#instagram"></use>
+  </svg>
+  <span>Instagram</span>
+</a>
+        <a class="btn" href="https://tiktok.com/@manz.dev">
+  <svg>
+    <use href="/assets/icons/social.svg#tiktok"></use>
+  </svg>
+  <span>Tiktok</span>
+</a>
+        <a class="btn" href="https://linkedin.com/in/joseromanhdez">
+  <svg>
+    <use href="/assets/icons/social.svg#linkedin"></use>
+  </svg>
+  <span>Linkedin</span>
+</a>
+        <a class="btn" href="https://discord.manz.dev/">
+  <svg>
+    <use href="/assets/icons/social.svg#discord"></use>
+  </svg>
+  <span>Discord</span>
+</a>
+        <a class="btn" href="https://github.com/ManzDev">
+  <svg>
+    <use href="/assets/icons/social.svg#github"></use>
+  </svg>
+  <span>GitHub</span>
+</a>
+      </div>
+
+      <div class="group last column">
+        <p>Creado por Manz con <span title="&lt;3">❤</span> · Alojado en <a href="https://manz.dev/digitalocean">DigitalOcean</a>.</p>
+        <p>© Todos los derechos reservados. Los izquierdos también.</p>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-136544-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async="" src="./Clases en Javascript - Javascript en español - Lenguaje JS_files/analytics.js.descarga"></script>
+
+
+<script>
+  const heart = document.querySelector("footer.main span[title='<3']");
+  let beat;
+  heart.addEventListener("mousedown", () => {
+    if (!beat)
+      beat = new Audio("/assets/sounds/beat.ogg");
+    beat.currentTime = 0;
+    beat.play();
+  });
+</script>
+
+  </div>
+
+
+<scribe-shadow id="crxjs-ext" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible;"><template shadowrootmode="open"><div id="root-scribe-elem" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; overflow: visible; color: rgb(15, 23, 42);"></div><link rel="stylesheet" href="chrome-extension://okfkdaglfjjjfefdcppliegebpoegaii/assets/style.css"></template></scribe-shadow></body></html>
