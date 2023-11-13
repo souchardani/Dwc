@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="app.js"></script>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 0 auto;
+      }
+
+      label {
+        margin-top: 10px;
+      }
+
+      input {
+        margin-bottom: 10px;
+      }
+
+      textarea {
+        margin-bottom: 10px;
+      }
+
+      select {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <label for="Nombre">Nombre*</label>
+      <input type="text" name="Nombre" id="Nombre" required />
+      <label for="Apellido">Apellido*</label>
+      <input type="text" name="Apellido" id="Apellido" required />
+      <label for="Edad">Edad*</label>
+      <input type="number" name="Edad" id="Edad" required />
+      <label for="Email">Email*</label>
+      <input type="email" name="Email" id="Email" required />
+      <label for="Matricula">Matricula Coche*</label>
+      <input type="text" name="Matricula" id="Matricula" required />
+      <label for="coche">Coche*</label>
+      <select name="marca" id="marca">
+        <option value="">Escoge marca</option>
+      </select>
+      <select name="modelo" id="modelo">
+        <option value="">Escoge modelo</option>
+      </select>
+      <label for="Peticion">Peticion*</label>
+      <input type="radio" name="peticion" id="peticion" value="Averia Coche" />
+      <input
+        type="radio"
+        name="peticion"
+        id="peticion"
+        value="Revision Coche"
+      />
+      <input
+        type="radio"
+        name="peticion"
+        id="peticion"
+        value="Limpieza Coche"
+      />
+      <label for="obs"></label>
+      <textarea name="obs" id="obs" cols="30" rows="10"></textarea>
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
