@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 3</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ message }}</h1>
+      <form @submit.prevent="agregarFruta" action="#">
+        <input v-model="txtFruta" type="text" placeholder="Agrega una Fruta" />
+        <input type="submit" value="Enviar" />
+      </form>
+      <ul>
+        <li v-for="fruta in frutasFiltro()">
+          <input type="text" :value="fruta.stock" />
+          {{fruta.nombre}}
+          <input type="button" value="+" @click="sumarFruta(fruta)" />
+          <span v-if="fruta.stock <= 0">- Sin stock</span>
+        </li>
+      </ul>
+      <input
+        type="range"
+        name=""
+        id=""
+        max="20"
+        v-model="rangoValor"
+        @change="filtrarRango"
+      />
+      <h4>Minimo seleccionado: <span v-text="rangoValor"></span></h4>
+      <h4>Total: {{cantidadFrutas}}</h4>
+      <hr />
+      <strong>Buscar Fruta: </strong>
+      <input type="text" name="" id="" v-model="busquedaFruta" />
+      <ul>
+        <li v-for="fruta in frutasBusca">
+          {{fruta.nombre}}
+          <span v-if="fruta.stock <= 0">- Sin stock</span>
+        </li>
+      </ul>
+    </div>
+    <!-- incluimos vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

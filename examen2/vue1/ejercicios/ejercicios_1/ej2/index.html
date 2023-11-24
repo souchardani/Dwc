@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ message }}</h1>
+      <form @submit.prevent="agregarFruta" action="#">
+        <input v-model="txtFruta" type="text" placeholder="Agrega una Fruta" />
+        <input type="submit" value="Enviar" />
+      </form>
+      <ul>
+        <li v-for="fruta in frutas">
+          <span>{{fruta.stock}}</span> - {{fruta.nombre}}
+          <span v-if="fruta.stock <= 0">- Sin stock</span>
+        </li>
+      </ul>
+    </div>
+    <!-- incluimos vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

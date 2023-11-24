@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue JS - Componentes Comunicación 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <div id="app" class="container">
+        <!-- Aqui creamos un componente padre y dentro de él crearemos un hijo -->
+        <padre></padre>
+
+    </div>
+    <!-- Vue2 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    
+    <!-- Vue3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <script>
+        const app = Vue.createApp({
+        })
+
+        app.component('padre',{
+            template: //html 
+            `   
+            <div class="p-5 bg-dark text-white">
+                <h2>Componente Padre: {{ numeroPadre }}</h2>
+                <button class="btn btn-danger" @click="numeroPadre++">+</button>
+                <hijo numero="5"></hijo><!-- le envío a hijo un dato que se llama numero con contenido "5" -->
+                <hijo :numero="numeroPadre"></hijo><!--Aquí le envío el dato numero, pero en este caso está bindeado numeropadre que es un dato de este componente -->
+            </div>
+            `,
+            data(){
+                return {
+                    numeroPadre:0
+                }
+            }
+        });
+        app.component("hijo", {
+            template: `
+                <div class="py-5 bg-success">
+                    <h4 >Componente hijo</h4>
+                    <h5>{{ numero }}</h5>
+                </div>
+                `,
+            props: ["numero"], //en props recibo los datos que nos manda el componente padre
+            });
+
+        app.mount('#app')
+    </script>
+</body>
+</html>

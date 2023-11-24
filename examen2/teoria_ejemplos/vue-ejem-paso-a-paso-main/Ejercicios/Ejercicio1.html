@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>PRUEBAS</h1>
+        <h2>******{{ mensaje}}******</h2>
+        <ul>
+            <!-- <li v-for="fruta in frutas"> {{fruta.nombre}} - 
+                <small>{{fruta.cantidad > 0 ? fruta.cantidad :fruta.cantidad + " sin stock"}}</small>
+            </li> -->
+            <li v-for="fruta in frutas"> {{fruta.nombre}} - 
+                <small v-if="fruta.cantidad > 0">{{fruta.cantidad}}</small>
+                <small v-else>0 - Sin Stock</small>
+            </li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app={
+            data(){
+                return{
+                    mensaje:'lkclckds',
+                    frutas:[
+                        {
+                        cantidad : 10,
+                        nombre: 'manzana'
+                        },
+                        {
+                            cantidad : 0,
+                            nombre : 'pera'
+                        },
+                        {
+                            cantidad : 5,
+                            nombre : 'platano'
+                        }
+                    ]
+                }
+            }
+        }
+        Vue.createApp(app).mount('#app')
+    </script>
+</body>
+</html>
