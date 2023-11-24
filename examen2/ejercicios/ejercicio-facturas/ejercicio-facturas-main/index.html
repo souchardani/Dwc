@@ -29,9 +29,10 @@
               id="txtProducto"
             />
             <input
-              type="text"
+              type="number"
               placeholder="Cantidad"
               class="block text-sm py-3 px-4 rounded-lg w-full border outline-none"
+              id="txtCantidad"
             />
           </div>
           <div class="text-center mt-6">
@@ -65,7 +66,7 @@
             </header>
             <div class="p-3">
               <div class="overflow-x-auto">
-                <table class="table-auto w-full">
+                <table class="table-auto w-full" id="tablaFactura">
                   <thead
                     class="text-xs font-semibold uppercase text-gray-400 bg-gray-50"
                   >
@@ -91,25 +92,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody class="text-sm divide-y divide-gray-100">
-                    <tr>
-                      <td class="font-medium text-gray-800">12</td>
-                      <td>
-                        <div class="font-medium text-gray-800">24</div>
-                      </td>
-                      <td class="p-2 whitespace-nowrap">
-                        <div class="text-left">Cargador de teléfono</div>
-                      </td>
-                      <td class="p-2 whitespace-nowrap">
-                        <div class="text-center font-medium text-green-500">
-                          150€
-                        </div>
-                      </td>
-                      <td class="p-2 whitespace-nowrap">
-                        <div class="text-lg text-center">155€</div>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody class="text-sm divide-y divide-gray-100"></tbody>
                 </table>
                 <!-- subtotal y total -->
                 <div class="mt-20">
