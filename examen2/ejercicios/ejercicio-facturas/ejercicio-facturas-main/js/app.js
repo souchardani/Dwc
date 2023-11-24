@@ -47,7 +47,14 @@ function anadirFactura() {
   //obtenemos el producto del input
   let prod = document.querySelector("#txtProducto");
   if (prod.value) {
-    alert(prod.value);
+    //traemos los datos de ese producto del php
+    fetch("php/productoFactura.php", {
+      method: "POST",
+      body: prod.value,
+    })
+      .then((response) => response.json())
+      .then((resultado) => console.log(resultado))
+      .catch((error) => console.error("Fetch error:", error));
     //reinicamos la caja de texto
     prod.value = "";
   } else {
