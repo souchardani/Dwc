@@ -14,7 +14,7 @@
       </form>
       <ul>
         <li v-for="fruta in frutasFiltro()">
-          <input type="text" :value="fruta.stock" />
+          <input type="number" v-model="fruta.stock" />
           {{fruta.nombre}}
           <input type="button" value="+" @click="sumarFruta(fruta)" />
           <span v-if="fruta.stock <= 0">- Sin stock</span>
