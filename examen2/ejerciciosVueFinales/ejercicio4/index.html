@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="m-6">
+    <div class="flex justify-center" id="app">
+      <script>
+        const listaTareas = {
+          data() {
+            return {};
+          },
+          props: {
+            lista: Array,
+          },
+          template: `
+            <ul>
+              <li v-for="(tarea, index) in lista" class="m-3">
+                {{ tarea }}
+                <button @click="borrarTarea(index)" class="bg-cyan-100 py-1 px-3 rounded-lg">Borrar</button>
+              </li>
+            </ul>
+           
+            `,
+          methods: {
+            borrarTarea(index) {
+              this.$emit("borrarTarea", index);
+            },
+          },
+        };
+
+        const app = Vue.createApp({
+          template: `
+          <div class="w-5/6 text-center bg-slate-200 rounded-lg p-6 shadow">
+            <h1 class="text-xl italic font-bold text-cyan-500 mb-5">Ejercicio 4 vue</h1>
+            <div class="mb-5">
+            Tarea: <input v-model="nuevaTarea" type="text" /> <button @click="addTarea" class="bg-cyan-400 py-1 px-3 rounded-lg">Crear</button>
+            </div>
+            <listaTareas @borrarTarea="borrar" :lista="tareas" />
+          </div>
+
+          `,
+          data() {
+            return {
+              nuevaTarea: "Tarea 1",
+              tareas: [],
+            };
+          },
+          methods: {
+            addTarea() {
+              if (this.nuevaTarea == undefined) {
+                alert("La tarea no puede estar vacia");
+              } else {
+                this.tareas.push(this.nuevaTarea);
+              }
+            },
+            borrar(index) {
+              this.tareas.splice(index, 1);
+            },
+          },
+          components: {
+            listaTareas,
+          },
+        });
+        app.mount("#app");
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body @mousemove="alert('hola')" class="p-5">
+    <div id="app"></div>
+    <script>
+      const App = {
+        data() {
+          return {
+            horas: 0,
+            minutos: 0,
+            segundos: 0,
+            intervalo: null,
+          };
+        },
+        template: `
+        <div class="container mx-auto p-4 bg-blue-200 rounded-xl">
+            <h1 class="text-center font-bold">Ejercicio 3</h1>
+            <h3 class="text-center mt-5 font-bold text-xl">Cuenta regresiva: <span class="text-red-800">{{ horas }}:{{ minutos }}:{{ segundos }}</span></h3>
+            <button @click="iniciarContador(2)" class="m-3 py-2 px-3 bg-slate-100 rounded hover:bg-slate-200">2s</button>
+            <button @click="iniciarContador(3)" class="m-3 py-2 px-3 bg-slate-100 rounded hover:bg-slate-200">3s</button>
+            <button @click="iniciarContador(55)" class="m-3 py-2 px-3 bg-slate-100 rounded hover:bg-slate-200">55s</button>
+            <button @click="iniciarContador(89)" class="m-3 py-2 px-3 bg-slate-100 rounded hover:bg-slate-200">89s</button>
+        </div>
+        `,
+        methods: {
+          iniciarContador(segundos) {
+            this.segundos = segundos;
+            if (this.segundos > 59) {
+              this.minutos = 1;
+              this.segundos = segundos - 50;
+            }
+
+            if (this.intervalo) {
+              clearInterval(this.intervalo);
+              this.intervalo = null;
+            }
+
+            this.intervalo = setInterval(() => {
+              this.segundos--;
+              if (this.segundos == 0) {
+                clearInterval(this.intervalo);
+                this.intervalo = null;
+              }
+            }, 1000);
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
