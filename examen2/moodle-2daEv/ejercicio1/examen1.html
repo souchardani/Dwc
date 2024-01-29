@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mi formulario</title>
+    <style>
+      /* CSS para establecer el borde rojo alrededor de las imágenes */
+      .bordeRojo {
+        border: 3px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="matricula">Matrícula:</label>
+      <input
+        type="text"
+        id="matricula"
+        name="matricula"
+        pattern="[0-9]{4}-[a-z&&[^aeiou]]{3}"
+        required
+      />
+      <br />
+      <label for="tipo">Tipo:</label>
+      <select id="tipo" name="tipo">
+        <option value="motocicleta">Motocicleta</option>
+        <option value="automovil">Automóvil</option>
+        <option value="camion">Camión</option>
+      </select>
+      <br />
+      <img
+        id="menorEdad"
+        src="menorEdad.png"
+        alt="Menor de edad"
+        width="100"
+        height="100"
+      />
+      <img
+        id="mayorEdad"
+        src="mayorEdad.png"
+        alt="Mayor de edad"
+        width="100"
+        height="100"
+      />
+      <img
+        id="particular"
+        src="particular.png"
+        alt="Particular"
+        width="100"
+        height="100"
+      />
+      <img
+        id="profesional"
+        src="profesional.png"
+        alt="Profesional de edad"
+        width="100"
+        height="100"
+      />
+      <img id="rigido" src="rigido.png" alt="Rígido" width="100" height="100" />
+      <img
+        id="articulado"
+        alt="Articulado"
+        src="articulado.png"
+        width="100"
+        height="100"
+      />
+    </form>
+    <button id="submitBtn">Mostrar datos</button>
+    <div id="resultado"></div>
+
+    <script>
+      // Seleccionar los elementos del formulario
+      const matricula = document.getElementById("matricula");
+      const tipo = document.getElementById("tipo");
+      const menorEdad = document.getElementById("menorEdad");
+      const mayorEdad = document.getElementById("mayorEdad");
+      const particular = document.getElementById("particular");
+      const profesional = document.getElementById("profesional");
+      const rigido = document.getElementById("rigido");
+      const articulado = document.getElementById("articulado");
+      const submitBtn = document.getElementById("submitBtn");
+      const resultado = document.getElementById("resultado");
+      const images = [
+        menorEdad,
+        mayorEdad,
+        profesional,
+        rigido,
+        articulado,
+        particular,
+      ];
+
+      // Ocultar todas las imágenes al inicio
+      window.addEventListener("DOMContentLoaded", () => {
+        for (const element of images) {
+          element.style.display = "none";
+          element.addEventListener("click", function () {
+            const check = checkborder(element);
+            if (check) {
+              alert("ya hay una imagen seleccionada");
+              return;
+            }
+            element.classList.toggle("bordeRojo");
+          });
+        }
+      });
+
+      // Mostrar las imágenes adecuadas dependiendo de la opción seleccionada en el campo "tipo"
+      tipo.addEventListener("change", function () {
+        if (this.value === "motocicleta") {
+          menorEdad.style.display = "block";
+          mayorEdad.style.display = "block";
+          particular.style.display = "none";
+          profesional.style.display = "none";
+          rigido.style.display = "none";
+          articulado.style.display = "none";
+        } else if (this.value === "automovil") {
+          menorEdad.style.display = "none";
+          mayorEdad.style.display = "none";
+          particular.style.display = "block";
+          profesional.style.display = "block";
+          rigido.style.display = "none";
+          articulado.style.display = "none";
+        } else {
+          menorEdad.style.display = "none";
+          mayorEdad.style.display = "none";
+          particular.style.display = "none";
+          profesional.style.display = "none";
+          rigido.style.display = "block";
+          articulado.style.display = "block";
+        }
+      });
+
+      // Añadir o quitar la clase "bordeRojo" a las imágenes al hacer clic en ellas
+      // menorEdad.addEventListener("click", function () {
+      //   const check = checkborder(menorEdad);
+      //   if (check) {
+      //     alert("ya hay una imagen seleccionada");
+      //     return;
+      //   }
+      //   this.classList.toggle("bordeRojo");
+      // });
+      // mayorEdad.addEventListener("click", function () {
+      //   this.classList.toggle("bordeRojo");
+      // });
+      // particular.addEventListener("click", function () {
+      //   this.classList.toggle("bordeRojo");
+      // });
+      // profesional.addEventListener("click", function () {
+      //   this.classList.toggle("bordeRojo");
+      // });
+      // rigido.addEventListener("click", function () {
+      //   this.classList.toggle("bordeRojo");
+      // });
+      // articulado.addEventListener("click", function () {
+      //   this.classList.toggle("bordeRojo");
+      // });
+
+      function checkborder(imagen) {
+        let include = false;
+        images.forEach((element) => {
+          if (element.classList.contains("bordeRojo") && element !== imagen)
+            include = true;
+        });
+        return include;
+      }
+
+      // Mostrar los datos del formulario al hacer clic en el botón "Mostrar datos"
+      submitBtn.addEventListener("click", function () {
+        resultado.innerHTML = "Matrícula: " + matricula.value + "<br>";
+        resultado.innerHTML += "Tipo: " + tipo.value + "<br>";
+
+        // Obtener las imágenes con la clase "bordeRojo"
+        var imgs = document.querySelectorAll(".bordeRojo");
+
+        // Mostrar el atributo alt de las imágenes marcadas en rojo
+        if (imgs.length > 0) {
+          resultado.innerHTML += "Imágenes seleccionadas: ";
+          for (var i = 0; i < imgs.length; i++) {
+            resultado.innerHTML += imgs[i].alt + " ";
+          }
+        } else {
+          resultado.innerHTML += "No se ha seleccionado ninguna imagen.";
+        }
+      });
+    </script>
+  </body>
+</html>
