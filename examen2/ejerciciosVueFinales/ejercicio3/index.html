@@ -32,11 +32,6 @@
         methods: {
           iniciarContador(segundos) {
             this.segundos = segundos;
-            if (this.segundos > 59) {
-              this.minutos = 1;
-              this.segundos = segundos - 50;
-            }
-
             if (this.intervalo) {
               clearInterval(this.intervalo);
               this.intervalo = null;
@@ -44,6 +39,10 @@
 
             this.intervalo = setInterval(() => {
               this.segundos--;
+              if (this.segundos % 60 > 0) {
+                this.minutos = 1;
+                this.segundos = this.segundos - 60;
+              }
               if (this.segundos == 0) {
                 clearInterval(this.intervalo);
                 this.intervalo = null;
