@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>¡Bienvenido al juego de los Goya 2023!</h2>
+    <input disabled="disabled" id="pelicula" size="50" />
+    <select id="premios">
+      <option value="0">Mejor película</option>
+      <option value="1">Mejor película de animación</option>
+      <option value="2">Mejor película documental</option>
+      <option value="3">Cortometraje documental</option>
+      <option value="4">Cortometraje de animación</option>
+      <option value="5">Cortometraje de ficción</option>
+    </select>
+    <button id="boton">Comprobar</button>
+    <h3 id="mensaje"></h3>
+    <script>
+      //Aquí va la clase PeliculaPremio
+      class PeliculaPremio {
+        constructor(pelicula, premio) {
+          this._pelicula = pelicula;
+          this._premio = premio;
+        }
+
+        get pelicula() {
+          return this.pelicula;
+        }
+
+        get premio() {
+          return this.premio;
+        }
+
+        set pelicula(pelicula) {
+          this.pelicula = pelicula;
+        }
+
+        set premio(premio) {
+          this.premio = premio;
+        }
+
+        toString() {
+          return (
+            "La Pelicula: " +
+            this.pelicula +
+            "Ha ganado el Premio: " +
+            this.premio
+          );
+        }
+      }
+      //Arrays de películas y premios
+      //Cada película y premio se corresponden uno a uno:
+      //As bestas con Mejor película, Unicorn war con Mejor película de animación, etc.
+      const peliculas = [
+        "As bestas",
+        "Unicorn war",
+        "Labordeta, un hombre sin más",
+        "Maldita",
+        "The loop",
+      ];
+
+      const premios = [
+        "Mejor película",
+        "Mejor película de animación",
+        "Mejor película documental",
+        "Cortometraje documental",
+        "Cortometraje de animación",
+        "Cortometraje de ficción",
+      ];
+
+      const arrayPeliculas = [];
+
+      let intentos = 4;
+
+      //Aquí va la función que crea los objetos PeliculaPremio y los mete en el array
+      function comprobarPelicula() {
+        let pelicula = document.getElementById("pelicula").value;
+        let premio = document.getElementById("premios").value;
+        let indexPelicula = peliculas.indexOf(pelicula);
+        console.log(indexPelicula);
+        if (indexPelicula == premio) {
+          let peliculaPremio = new PeliculaPremio(pelicula, premio);
+          arrayPeliculas.push(peliculaPremio);
+          document.getElementById("mensaje").innerHTML =
+            "¡Correcto! La película " +
+            pelicula +
+            " ha ganado el premio " +
+            premios[premio];
+          let boton = document.getElementById("boton");
+          boton.disabled = true;
+        } else {
+          alert(`¡Incorrecto! te quedan ${intentos} intentos`);
+          document.getElementById("mensaje").innerHTML =
+            "¡Incorrecto! La película " +
+            pelicula +
+            " no ha ganado el premio " +
+            premio;
+          intentos--;
+          document.getElementById("premios").focus();
+          if (intentos == 0) {
+            alert("Fin del juego");
+            let boton = document.getElementById("boton");
+            boton.disabled = true;
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("pelicula").disabled = false;
+        let randomIndex = Math.floor(Math.random() * peliculas.length);
+        document.getElementById("pelicula").value = peliculas[randomIndex];
+
+        document.getElementById("boton").addEventListener("click", function () {
+          comprobarPelicula();
+        });
+      });
+      //Script de la aplicación
+    </script>
+  </body>
+</html>

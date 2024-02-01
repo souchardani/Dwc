@@ -1,24 +1,88 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Simulador de Números Aleatorios</title>
-  <script src="script.js"></script>
-</head>
-<body>
-  <h1>Simulador de Números Aleatorios</h1>
-  
-  <label for="nombre">Nombre:</label>
-  <input type="text" id="nombre">
+  <head>
+    <title>Simulador de Números Aleatorios</title>
+  </head>
+  <body>
+    <h1>Simulador de Números Aleatorios</h1>
 
-  <label for="limit">Límite:</label>
-  <input type="number" id="limit">
-  
-  <label for="count">Cantidad de números:</label>
-  <input type="number" id="count">
-  
-  <button onclick="generarNumerosAleatorios()">Generar</button>
-  
-  <h2>Números Aleatorios Generados:</h2>
-  <ul id="numerosAleatorios"></ul>
-</body>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" />
+
+    <label for="limit">Límite:</label>
+    <input type="number" id="limit" />
+
+    <label for="count">Cantidad de números:</label>
+    <input type="number" id="count" />
+
+    <button onclick="generarNumerosAleatorios()">Generar</button>
+
+    <h2>Números Aleatorios Generados:</h2>
+    <ul id="numerosAleatorios"></ul>
+    <script>
+      class NumerosAleatorios {
+        constructor(persona = "", numeros = []) {
+          this.persona = persona;
+          this.numeros = numeros;
+        }
+
+        getPersona() {
+          return this.persona;
+        }
+
+        setPersona(persona) {
+          this.persona = persona;
+        }
+
+        getNumeros() {
+          return this.numeros;
+        }
+
+        setNumeros(numeros) {
+          this.numeros = numeros;
+        }
+
+        ingresarNumero(numero) {
+          this.numeros.push(numero);
+        }
+      }
+
+      function generarNumerosAleatorios() {
+        alert("entrando");
+        const nombreInput = document.getElementById("nombre");
+        const limitInput = document.getElementById("limit");
+        const countInput = document.getElementById("count");
+        const numerosAleatoriosList =
+          document.getElementById("numerosAleatorios");
+
+        const nombre = nombreInput.value.trim() || "Usuario";
+        const limite = parseInt(limitInput.value) || 50;
+        const cantidad = parseInt(countInput.value) || 6;
+
+        // Validar que el nombre esté informado
+        if (!nombre) {
+          alert("El nombre es obligatorio.");
+          return;
+        }
+
+        const numerosAleatoriosObj = new NumerosAleatorios(nombre);
+
+        // Generar números aleatorios no repetidos
+        while (numerosAleatoriosObj.getNumeros().length < cantidad) {
+          const numeroAleatorio = Math.floor(Math.random() * limite) + 1;
+          if (!numerosAleatoriosObj.getNumeros().includes(numeroAleatorio)) {
+            numerosAleatoriosObj.ingresarNumero(numeroAleatorio);
+          }
+        }
+
+        // Mostrar los números en la lista
+        numerosAleatoriosList.innerHTML = "";
+        numerosAleatoriosObj.getNumeros().forEach((numero) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = numero;
+          numerosAleatoriosList.appendChild(listItem);
+        });
+      }
+    </script>
+  </body>
 </html>
