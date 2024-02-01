@@ -20,6 +20,17 @@
     <h2>Números Aleatorios Generados:</h2>
     <ul id="numerosAleatorios"></ul>
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const nombreInput = document.getElementById("nombre");
+        const limitInput = document.getElementById("limit");
+        const countInput = document.getElementById("count");
+        const generarButton = document.querySelector("button");
+
+        generarButton.addEventListener("click", () => {
+          generarNumerosAleatorios();
+        });
+      });
+
       class NumerosAleatorios {
         constructor(persona = "", numeros = []) {
           this.persona = persona;
@@ -48,7 +59,6 @@
       }
 
       function generarNumerosAleatorios() {
-        alert("entrando");
         const nombreInput = document.getElementById("nombre");
         const limitInput = document.getElementById("limit");
         const countInput = document.getElementById("count");
