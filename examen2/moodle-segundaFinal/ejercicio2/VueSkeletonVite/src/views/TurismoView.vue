@@ -10,7 +10,7 @@
       name=""
       id=""
     >
-      <option selected value="nofilter">Elige una opcion (por defecto)</option>
+      <option selected value="">Elige una opcion (por defecto)</option>
       <option value="todas">Todas</option>
       <option value="Araba">Araba</option>
       <option value="Bizkaia">Bizkaia</option>
@@ -73,7 +73,7 @@ export default {
       turismo: [],
       turismoFiltro: [],
       filtroProvincia: "",
-      filtroMes: "",
+      filtroMes: "nofilter",
     };
   },
   computed: {
@@ -81,23 +81,29 @@ export default {
   },
   methods: {
     filtrado(tipo) {
-      if (tipo == "provincia") {
+      if (this.filtroProvincia == "") {
+        this.turismoFiltro = [];
+      } else {
         if (this.filtroProvincia == "todas") {
-          this.turismoFiltro = this.turismo;
-        } else if (this.filtroProvincia == "nofilter") {
-          this.turismoFiltro = this.turismo;
+          if (this.filtroMes == "nofilter") {
+            this.turismoFiltro = this.turismo;
+          } else {
+            this.turismoFiltro = this.turismo.filter(
+              (item) => item.eventSearchDate1.slice(4, 6) == this.filtroMes
+            );
+          }
         } else {
-          this.turismoFiltro = this.turismo.filter(
-            (item) => item.territory == this.filtroProvincia
-          );
-        }
-      } else if (tipo == "mes") {
-        if (this.filtroMes == "nofilter") {
-          this.turismoFiltro = this.turismo;
-        } else {
-          this.turismoFiltro = this.turismo.filter(
-            (item) => item.eventStartDate.slice(5, 7) == this.filtroMes
-          );
+          if (this.filtroMes == "nofilter") {
+            this.turismoFiltro = this.turismo.filter(
+              (item) => item.territory == this.filtroProvincia
+            );
+          } else {
+            this.turismoFiltro = this.turismo.filter(
+              (item) =>
+                item.territory == this.filtroProvincia &&
+                item.eventSearchDate1.slice(4, 6) == this.filtroMes
+            );
+          }
         }
       }
     },
